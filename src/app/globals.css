@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define the custom color palette in :root for light mode */
+:root {
+  --color-primary-light: #fce2c8; /* Light background */
+  --color-secondary-light: #059389; /* Light accent */
+  --background: #ffffff; /* Default light background */
+  --foreground: #171717; /* Default light text */
+}
+
+/* Define dark mode colors using media query */
+@media (prefers-color-scheme: root) {
+  :root {
+    --color-primary-dark: #171717; /* Dark background */
+    --color-secondary-dark: #059389; /* Dark accent */
+    --background: #0a0a0a; /* Dark mode background */
+    --foreground: #ededed; /* Dark mode text */
+  }
+}
+
+/* Apply the variables */
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
