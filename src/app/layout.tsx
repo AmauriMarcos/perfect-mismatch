@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import { Providers } from "./provider";
 
 // Import Montserrat for titles
 const montserrat = Montserrat({
@@ -31,9 +32,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${montserrat.variable} ${inter.variable} antialiased`}>
         <main className="flex flex-col justify-between h-[100vh]">
-          <Navbar />
-          {children}
-          <Footer />
+          <Providers>
+            <Navbar />
+            {children}
+            <Footer />
+          </Providers>
         </main>
       </body>
     </html>
