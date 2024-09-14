@@ -9,11 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "var(--background)", // Dynamic background color
+        foreground: "var(--foreground)", // Dynamic text color
+        primary: "var(--color-primary)", // Unified primary color
+        secondary: "var(--color-secondary)", // Unified secondary color
+        tertiary: "var(--color-tertiary)"
+      },
+      fontFamily: {
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
       },
     },
   },
   plugins: [],
 };
+
 export default config;

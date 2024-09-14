@@ -1,10 +1,12 @@
 import Image from "next/image";
-/* font-[family-name:var(--font-geist-sans)] */
+import Hero from "@/components/Hero/Hero";
 export default function Home() {
   return (
-    <div>
-      Hello
-      <h1>WORLD</h1>
+    <div className="h-100% w-full px-[6%]  grow">
+      <Hero/>
+      <h1>SOME</h1>
+      <p>Good stuff in here</p>
+      <h3>Real Value</h3>
     </div>
   );
 }
