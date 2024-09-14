@@ -5,6 +5,7 @@ import { IoIosSearch as IconSearch } from "react-icons/io";
 import ThemeSwitch from "../ThemeSwitcher";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
 const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -29,7 +30,7 @@ const Navbar = () => {
         </p>
       </div>
 
-      <div className="w-full px-[6%] h-[56px] bg-background flex justify-between items-center">
+      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-[56px] bg-background flex justify-between items-center">
         <div>
           <h3>Logo</h3>
         </div>
@@ -55,8 +56,9 @@ const Navbar = () => {
           
           ))}
         </ul>
-        <div>
+        <div className="flex gap-6 items-center">
           <ThemeSwitch />
+          <MobileMenu/>
         </div>
       </div>
     </div>
