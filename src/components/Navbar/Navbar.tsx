@@ -22,15 +22,15 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="w-full flex flex-col h-[100%]">
-      <div className="hidden md:flex w-full items-center justify-center py-6 gap-2 h-[30px] bg-tertiary group">
+    <div className="w-full flex flex-col">
+      <div className="hidden md:flex w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[45px] bg-tertiary group">
         <IconSearch className="h-4 w-4 md:h-6 md:w-6 fill-[#313331] cursor-pointer group-hover:fill-secondary" />
-        <p className="font-montserrat text-[.625rem] md:text-[.75rem] uppercase tracking-wider font-semibold text-[#313331] cursor-pointer group-hover:text-secondary">
+        <h4 className="font-montserrat text-[.525rem] md:text-[.65rem] uppercase  font-bold text-[#313331] cursor-pointer group-hover:text-secondary">
           Explore the latest updates, visit our latest posts now!
-        </p>
+        </h4>
       </div>
 
-      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-[56px] bg-background flex justify-between items-center">
+      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-[56px] bg-background flex justify-between items-center shadow-md">
         <div>
           <h3>Logo</h3>
         </div>
