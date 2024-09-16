@@ -9,17 +9,18 @@ export default function ThemeSwitch() {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
 
+
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return <>...</>;
 
   if (currentTheme === "dark") {
-    return <SunIcon className="h-6 w-6" onClick={() => setTheme("light")} />;
+    return <SunIcon className="h-6 w-6 cursor-pointer" onClick={() => setTheme("light")} />;
   }
 
   if (currentTheme === "light") {
     return (
-      <MoonIcon className="h-6 w-6 text-gray-900" onClick={() => setTheme("dark")} />
+      <MoonIcon className="h-6 w-6 text-gray-900 cursor-pointer" onClick={() => setTheme("dark")} />
     );
   }
 }
