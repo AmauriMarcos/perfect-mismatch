@@ -11,7 +11,7 @@
     --primary-foreground: 0 0% 98%; /* white */
     --secondary: 173 58% 39%; /* custom secondary color */
     --secondary-foreground: 0 0% 9%; /* black */
-    --tertiary: 30 88% 90%; /* #FCE2C8 in HSL */
+    --tertiary: 30, 90%, 89%; /* #FCE2C8 in HSL */
     --tertiary-accent: 13, 100%, 77%; /* #FFA38A in HSL */
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
