@@ -16,12 +16,39 @@ const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
   const [stickyClass, setStickyClass] = useState('relative');
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0); // Initialize with a default value
   const pathname = usePathname();
 
-  const toggleSearch = () => {
-    setOpenSearch((prev) => !prev);
-  }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth); // Set initial width
+
+      const handleWindowResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+
+      window.addEventListener("resize", handleWindowResize);
+
+      return () => {
+        window.removeEventListener("resize", handleWindowResize);
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const stickNavbar = () => {
+        const windowHeight = window.scrollY;
+        windowHeight > 40 ? setStickyClass("sticky") : setStickyClass("relative");
+      };
+
+      window.addEventListener("scroll", stickNavbar);
+
+      return () => {
+        window.removeEventListener("scroll", stickNavbar);
+      };
+    }
+  }, []);
 
   const items = [
     { id: 1, name: "Home", path: "/" },
@@ -38,33 +65,9 @@ const Navbar = () => {
     { id: 4, name: "Subscribe", path: "/subscribe" },
   ];
 
-  useEffect(() => {
-    window.addEventListener('scroll', stickNavbar);
-  
-    return () => {
-      window.removeEventListener('scroll', stickNavbar);
-    };
-  }, []);
-  
-  const stickNavbar = () => {
-    if (window !== undefined) {
-      let windowHeight = window.scrollY;
-      windowHeight > 40 ? setStickyClass('sticky') : setStickyClass('relative'); // Pass a string
-    }
+  const toggleSearch = () => {
+    setOpenSearch((prev) => !prev);
   };
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleWindowResize);
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  });
-
 
   return (
     <div className={`w-full flex flex-col ${stickyClass === 'sticky' && 'fixed'}`}>
@@ -94,7 +97,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-2 items-center">
             <div className="h-[40px] w-[40px] rounded-full border-2 border-solid border-[#000] flex items-center justify-center group cursor-pointer">
               <IconFacebook className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out"/>
             </div>

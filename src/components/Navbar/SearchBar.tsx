@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef  } from 'react';
 import { Interface } from 'readline';
+import { IoIosSearch as IconSearch } from "react-icons/io";
+import { MdCleaningServices as IconClean} from "react-icons/md";
 
 interface SearchBarProps {
     openSearch: boolean; // Correct type is 'boolean'
@@ -8,6 +10,8 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ openSearch, windowWidth }) => {
   const [stickyClass, setStickyClass] = useState('relative');
+  const [search, setSearch] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const stickNavbar = () => {
@@ -26,12 +30,35 @@ const SearchBar: React.FC<SearchBarProps> = ({ openSearch, windowWidth }) => {
       window.removeEventListener('scroll', stickNavbar);
     };
   }, [openSearch]);
-/* ${windowWidth > 767 ? (stickyClass === 'sticky' ? 'top-[90px]' : 'top-[172px]') : 'h-[70px]'} */
+  
+  const resetSearch = () => {
+    setSearch('');
+  }
+
+  useEffect(() => {
+    if (openSearch && inputRef.current) {
+      inputRef.current.focus();  // Focus the input when the search is opened
+    }
+  }, [openSearch]);
+
   return (
     <div
-      className={`absolute h-[81px] py-[15px] px-[6px] ${windowWidth > 767 ? (stickyClass === 'sticky' ? 'top-[90px]' : 'top-[172px]') : (stickyClass === 'sticky' ? 'top-[70px]' : 'top-[108px]')}  left-0 z-50 bg-[#FCE2C8] w-full flex flex-col justify-between`}
+      className={`absolute h-[81px] py-[15px] px-[30px] ${windowWidth > 767 ? (stickyClass === 'sticky' ? 'top-[90px]' : 'top-[172px]') : (stickyClass === 'sticky' ? 'top-[68px]' : 'top-[108px]')}  left-0 z-50 bg-[#FCE2C8] w-full flex flex-col justify-between`}
     >
-      {/* SearchBar content */}
+      <div className='w-full flex justify-between items-center'>
+        <form className='w-full flex items-center justify-between pr-[60px]'>
+                <input 
+                    ref={inputRef}
+                    value={search} 
+                    onChange={(e) => setSearch(e.target.value)} 
+                    placeholder='Search...' 
+                    className='placeholder:text-[1.2rem] placeholder:text-[#313331] h-[50px]  placeholder:font-inter w-full bg-transparent border-none pl-[9.5px]  text-[1.2rem] focus-visible:outline-none' 
+                    type='text'
+                />
+                {search.length > 0 && < IconClean onClick={resetSearch} className='fill-gray-600 hover:rotate-12 transition-all duration-[350ms] ease-in-out cursor-pointer h-[20px] w-[20px]'/>}
+        </form>
+        <button className='mr-6'><IconSearch className='h-[25px] w-[25px]'/></button>
+      </div>
     </div>
   );
 };
