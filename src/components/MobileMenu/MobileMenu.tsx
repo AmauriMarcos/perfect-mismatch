@@ -12,8 +12,6 @@ const items = [
   { id: 7, name: 'Contact', path: '/contact' },
 ];
 
-
-
 const MobileMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [stickyClass, setStickyClass] = useState('relative');
