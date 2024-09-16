@@ -13,7 +13,6 @@ import { IoClose as IconClose } from "react-icons/io5";
 import SearchBar from "./SearchBar";
 
 const Navbar = () => {
-  const [isChecked, setIsChecked] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
   const [stickyClass, setStickyClass] = useState('relative');
   const [windowWidth, setWindowWidth] = useState(0); // Initialize with a default value

@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef  } from 'react';
-import { Interface } from 'readline';
 import { IoIosSearch as IconSearch } from "react-icons/io";
 import { MdCleaningServices as IconClean} from "react-icons/md";
 
@@ -16,7 +15,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ openSearch, windowWidth }) => {
   useEffect(() => {
     const stickNavbar = () => {
       if (window !== undefined) {
-        let windowHeight = window.scrollY;
+        const windowHeight = window.scrollY;
         windowHeight > 40 ? setStickyClass('sticky') : setStickyClass('relative');
       }
     };
