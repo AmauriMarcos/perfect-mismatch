@@ -1,6 +1,8 @@
+'use client'
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 
 const items = [
   { id: 1, name: 'Home', path: '/' },
@@ -12,9 +14,12 @@ const items = [
   { id: 7, name: 'Contact', path: '/contact' },
 ];
 
+
+
 const MobileMenu = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [stickyClass, setStickyClass] = useState('relative');
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -35,6 +40,22 @@ const MobileMenu = () => {
       document.body.style.overflow = "";
     };
   }, [menuOpen]);
+
+
+  useEffect(() => {
+  window.addEventListener('scroll', stickNavbar);
+
+  return () => {
+    window.removeEventListener('scroll', stickNavbar);
+  };
+}, []);
+
+const stickNavbar = () => {
+  if (window !== undefined) {
+    let windowHeight = window.scrollY;
+    windowHeight > 40 ? setStickyClass('sticky') : setStickyClass('relative'); // Pass a string
+  }
+};
 
 
   return (
@@ -59,9 +80,9 @@ const MobileMenu = () => {
           } origin-left ease-in-out duration-500`}
         />
       </div>
-        {/* shadow-[0 0 10px rgba(0,0,0,0.5)] */}
+        {/* ${stickyClass === 'sticky' && 'fixed'}`} */}
       {menuOpen && (
-        <div className="absolute top-[68px] z-50 left-0 bg-secondary w-full h-[100vh] flex flex-col justify-between shadow-[0 0 10px rgba(0,0,0,0.5)]">
+        <div className={`absolute ${stickyClass === 'sticky' ? 'top-[68px]' : 'top-[108px]'}  z-50 left-0 bg-secondary w-full h-[100vh] flex flex-col justify-between shadow-[0 0 10px rgba(0,0,0,0.5)]`}>
           {/* Menu items */}
           <div className="flex flex-col gap-2 items-center justify-center flex-grow">
             {items.map((item) => (
