@@ -1,8 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-
 
 const items = [
   { id: 1, name: 'Home', path: '/' },
@@ -14,10 +12,7 @@ const items = [
   { id: 7, name: 'Contact', path: '/contact' },
 ];
 
-
-
 const MobileMenu = () => {
-  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [stickyClass, setStickyClass] = useState('relative');
 
@@ -52,7 +47,7 @@ const MobileMenu = () => {
 
 const stickNavbar = () => {
   if (window !== undefined) {
-    let windowHeight = window.scrollY;
+    const windowHeight = window.scrollY;
     windowHeight > 40 ? setStickyClass('sticky') : setStickyClass('relative'); // Pass a string
   }
 };
