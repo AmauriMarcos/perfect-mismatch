@@ -9,7 +9,7 @@ import { Providers } from "./provider";
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
-  weight: ["400", "600", "700"],
+  weight: ["400", "600", "700", "800", "900"],
 });
 
 // Import Inter for body text

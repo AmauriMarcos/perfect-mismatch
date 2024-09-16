@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -20,8 +20,25 @@ const MobileMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+
+  useEffect(() => {
+    if (menuOpen) {
+      // Disable scrolling on the background
+      document.body.style.overflow = "hidden";
+    } else {
+      // Re-enable scrolling when menu is closed
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      // Cleanup to ensure scrolling is re-enabled on component unmount
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+
   return (
-    <div className="md:hidden z-50">
+    <div className="md:hidden z-50 ">
       <div
         className="flex flex-col gap-[4.5px] cursor-pointer"
         onClick={toggleMenu}
@@ -42,8 +59,9 @@ const MobileMenu = () => {
           } origin-left ease-in-out duration-500`}
         />
       </div>
+        {/* shadow-[0 0 10px rgba(0,0,0,0.5)] */}
       {menuOpen && (
-        <div className="absolute top-[56px] z-50 right-0 bg-secondary w-full h-[calc(100vh-56px)] flex flex-col justify-between shadow-[0 0 10px rgba(0,0,0,0.5)]">
+        <div className="absolute top-[68px] z-50 left-0 bg-secondary w-full h-[100vh] flex flex-col justify-between shadow-[0 0 10px rgba(0,0,0,0.5)]">
           {/* Menu items */}
           <div className="flex flex-col gap-2 items-center justify-center flex-grow">
             {items.map((item) => (

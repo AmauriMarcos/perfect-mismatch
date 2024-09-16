@@ -6,59 +6,104 @@ import ThemeSwitch from "../ThemeSwitcher";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import { TiSocialFacebook as IconFacebook } from "react-icons/ti";
+import { SlSocialInstagram as IconInstagram} from "react-icons/sl";
+import { IoIosMail as IconEmail } from "react-icons/io";
 
 const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
   const pathname = usePathname();
 
   const items = [
-    { id: 1, name: 'Home', path: '/' },
-    { id: 2, name: 'About', path: '/about' },
-    { id: 3, name: 'Recipes', path: '/recipes' },
-    { id: 4, name: 'Travels', path: '/travels' },
-    { id: 5, name: 'Crafts', path: '/crafts' },
-    { id: 6, name: 'Insights', path: '/insights' },
-    { id: 7, name: 'Contact', path: '/contact' },
+    { id: 1, name: "Home", path: "/" },
+    { id: 3, name: "Recipes", path: "/recipes" },
+    { id: 4, name: "Travels", path: "/travels" },
+    { id: 5, name: "Crafts", path: "/crafts" },
+    { id: 6, name: "Insights", path: "/insights" },
+  ];
+
+  const topLinks = [
+    { id: 1, name: "Home", path: "/" },
+    { id: 2, name: "About", path: "/about" },
+    { id: 3, name: "Contact", path: "/contact" },
+    { id: 4, name: "Subscribe", path: "/subscribe" },
   ];
 
   return (
-    <div className="w-full flex flex-col">
-      <div className="hidden md:flex w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[45px] bg-tertiary group">
-        <IconSearch className="h-4 w-4 md:h-6 md:w-6 fill-[#313331] cursor-pointer group-hover:fill-secondary" />
-        <h4 className="font-montserrat text-[.525rem] md:text-[.65rem] uppercase  font-bold text-[#313331] cursor-pointer group-hover:text-secondary">
+    <div className="w-full flex flex-col relative">
+      <div className="hidden md:flex w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[45px] bg-tertiaryAccent hover:bg-secondary group cursor-pointer">
+        <IconSearch className="h-4 w-4 md:h-6 md:w-6 fill-background cursor-pointer group-hover:fill-background" />
+        <h4 className="font-montserrat text-[.525rem] md:text-[.65rem] uppercase  font-bold text-background cursor-pointer group-hover:text-background">
           Explore the latest updates, visit our latest posts now!
         </h4>
       </div>
 
-      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-[56px] bg-background flex justify-between items-center shadow-md">
-        <div>
-          <h3>Logo</h3>
+      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-full bg-background flex flex-col justify-between items-center shadow-md ">
+        <div className=" hidden md:flex justify-between h-[56px] w-full py-[1.2rem]" >
+          <ul className="hidden md:flex gap-4 transition-all duration-[350ms] ease-in-out ">
+            {topLinks.map((item) => (
+              <li key={item.id} className="">
+                <Link
+                  href={item.path}
+                  className={`block transition-all duration-[350ms] ease-in-out text-[.875rem] ${
+                    item.path === pathname
+                      ? "text-foreground"
+                      : "hover:text-foreground"
+                  }`}
+                >
+                  {item.name}
+               
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="flex gap-4 items-center">
+            <div className="h-[40px] w-[40px] rounded-full border-2 border-solid border-[#000] flex items-center justify-center group cursor-pointer">
+              <IconFacebook className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out"/>
+            </div>
+            <div className="h-[40px] w-[40px] rounded-full border-2 border-solid border-[#000] flex items-center justify-center group cursor-pointer">
+              <IconInstagram className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out"/>
+            </div>
+            <div className="h-[40px] w-[40px] rounded-full border-2 border-solid border-[#000] flex items-center justify-center group cursor-pointer">
+              <IconEmail className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out"/>
+            </div>
+          </div>
         </div>
-        <ul className="hidden md:flex relative gap-6 grow m-auto justify-center transition-all duration-[350ms] ease-in-out">
-          {items.map((item) => (
-            <li key={item.id} className="relative">
-            <Link
-              href={item.path}
-              className={`relative block transition-all duration-[350ms] ease-in-out ${
-                item.path === pathname
-                  ? "text-foreground"
-                  : "hover:text-foreground"
-              }`}
-            >
-              {item.name}
-              <span
-                className={`absolute inset-0 top-[.2rem] bottom-[-.2rem] left-0 right-0 border-t-[3px] border-b-[3px] border-[#FFB4A0] transition-all duration-[350ms] ease-in-out opacity-0 ${
-                  item.path === pathname ? "opacity-100 top-[0] bottom-[-.2rem]" : ""
-                } hover:opacity-100 hover:top-[0] hover:bottom-[-.2rem]`}
-              ></span>
-            </Link>
-          </li>
-          
-          ))}
-        </ul>
-        <div className="flex gap-6 items-center">
-          <ThemeSwitch />
-          <MobileMenu/>
+        <div className="flex justify-between w-full h-[70px] gap-8  ">
+          <div>
+            <h3>Logo</h3>
+          </div>
+          <ul className="hidden md:flex relative gap-6 grow m-auto justify-end transition-all duration-[350ms] ease-in-out">
+            <div></div>
+            {items.map((item) => (
+              <li key={item.id} className="relative">
+                <Link
+                  href={item.path}
+                  className={`relative block transition-all duration-[350ms] ease-in-out font-black text-[1.2rem] ${
+                    item.path === pathname
+                      ? "text-foreground"
+                      : "hover:text-foreground"
+                  }`}
+                >
+                  {item.name}
+                  <span
+                    className={`absolute inset-0 top-[.2rem] bottom-[-.2rem] left-0 right-0 border-t-[3px] border-b-[3px] border-[#FFB4A0] transition-all duration-[350ms] ease-in-out opacity-0 ${
+                      item.path === pathname
+                        ? "opacity-100 top-[0] bottom-[-.2rem]"
+                        : ""
+                    } hover:opacity-100 hover:top-[0] hover:bottom-[-.2rem]`}
+                  ></span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="flex gap-6 items-center">
+            <ThemeSwitch />
+            <div className="h-[50px] w-[50px] hover:bg-tertiaryAccent bg-tertiary rounded-full border-solid border-[#000] flex items-center justify-center group cursor-pointer">
+              <IconSearch className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out"/>
+            </div>
+            <MobileMenu />
+          </div>
         </div>
       </div>
     </div>

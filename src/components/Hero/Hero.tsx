@@ -6,7 +6,7 @@ const Hero = () => {
     <div className=' py-10 w-full'>
       <div className='leading-50 tracking-wider'>
         <span className='font-montserrat font-bold text-[3.5rem]'>Hey, Marija here!</span>
-        <span className='font-montserrat font-normal text-[3.5rem] ml-2'>Discover the family blog where we celebrate the chaos of family life</span>
+        <span className='font-montserrat font-normal text-[2rem] md:text-[3.5rem] ml-2'>Discover the family blog where we celebrate the chaos of family life</span>
       </div>
       <div className='flex w-[full] my-10 justify-around gap-8'>
         <div className='w-full h-full '>
