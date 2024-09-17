@@ -18,6 +18,11 @@ const Navbar = () => {
   const [windowWidth, setWindowWidth] = useState(0); // Initialize with a default value
   const pathname = usePathname();
 
+  
+  if (pathname.startsWith('/studio')) {
+    return null; 
+  }
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setWindowWidth(window.innerWidth); // Set initial width
@@ -69,7 +74,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`w-full flex flex-col ${stickyClass === 'sticky' && 'fixed'}`}>
+    <div className={`w-full flex flex-col ${stickyClass === 'sticky' && 'fixed'} z-50`}>
       <div className={` ${stickyClass === 'sticky' ?'hidden' : 'flex'} w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[45px] bg-tertiaryAccent hover:bg-secondary group cursor-pointer`}>
         <IconSearch className="h-4 w-4 md:h-6 md:w-6 fill-background cursor-pointer group-hover:fill-background" />
         <h4 className="font-montserrat text-[.525rem] md:text-[.65rem] uppercase  font-bold text-background cursor-pointer group-hover:text-background">
@@ -109,11 +114,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className={` flex justify-between w-full ${windowWidth > 767 ? (stickyClass === 'sticky' ? 'h-[90px]' : 'h-[70px]') : 'h-[70px]'} gap-8`}>
-          <div>
-            <h3>Logo</h3>
+        <div className={` flex justify-between w-full ${windowWidth > 767 ? (stickyClass === 'sticky' ? 'h-[90px]' : 'h-[70px]') : 'h-[70px]'} gap-8 z-50`}>
+          <div className="h-full flex items-center justify-center">
+            <h3 className="font-extrabold text-[2rem] font-montserrat text-secondary">PMLogo</h3>
           </div>
-          <ul className="hidden md:flex relative gap-6 grow m-auto justify-end transition-all duration-[350ms] ease-in-out">
+          <ul className="hidden md:flex relative gap-6 grow m-auto justify-end transition-all duration-[350ms] ease-in-out items-center">
             {items.map((item) => (
               <li key={item.id} className="relative">
                 <Link
@@ -135,6 +140,11 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
+             {stickyClass === "sticky" && (
+              <button className="bg-transparent text-[1.2rem] font-extrabold border-2 border-secondary rounded-[25px] hover:text-secondary px-[.7rem] py-[.2em] flex items-center justify-center">
+                Subscribe
+              </button>
+            )}
           </ul>
           <div className="flex gap-6 items-center">
             <ThemeSwitch />

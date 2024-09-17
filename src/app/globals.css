@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* Define your custom color variables */
-    --background: 0 0% 100%; /* white background */
+    --background: 0, 0%, 99%; /* white background */
     --foreground: 0 0% 3.9%; /* dark foreground */
     --primary: 0 0% 9%; /* black */
     --primary-foreground: 0 0% 98%; /* white */
