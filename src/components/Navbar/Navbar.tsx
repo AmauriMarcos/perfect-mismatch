@@ -18,10 +18,6 @@ const Navbar = () => {
   const [windowWidth, setWindowWidth] = useState(0); // Initialize with a default value
   const pathname = usePathname();
 
-  
-  if (pathname.startsWith('/studio')) {
-    return null; 
-  }
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -72,6 +68,10 @@ const Navbar = () => {
   const toggleSearch = () => {
     setOpenSearch((prev) => !prev);
   };
+
+  if (pathname.startsWith('/studio')) {
+    return null; 
+  }
 
   return (
     <div className={`w-full flex flex-col ${stickyClass === 'sticky' && 'fixed'} z-50`}>

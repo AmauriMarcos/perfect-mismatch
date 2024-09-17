@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
-import { usePathname } from "next/navigation";
 
 const Categories = () => {
-  const pathname = usePathname();
   const categories = [
     {
       id: 1,
