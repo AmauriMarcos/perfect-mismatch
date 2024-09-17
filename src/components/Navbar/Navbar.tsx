@@ -7,17 +7,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import { TiSocialFacebook as IconFacebook } from "react-icons/ti";
-import { SlSocialInstagram as IconInstagram} from "react-icons/sl";
+import { SlSocialInstagram as IconInstagram } from "react-icons/sl";
 import { IoIosMail as IconEmail } from "react-icons/io";
 import { IoClose as IconClose } from "react-icons/io5";
 import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const [openSearch, setOpenSearch] = useState(false);
-  const [stickyClass, setStickyClass] = useState('relative');
+  const [stickyClass, setStickyClass] = useState("relative");
   const [windowWidth, setWindowWidth] = useState(0); // Initialize with a default value
   const pathname = usePathname();
-
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -39,7 +38,9 @@ const Navbar = () => {
     if (typeof window !== "undefined") {
       const stickNavbar = () => {
         const windowHeight = window.scrollY;
-        windowHeight > 40 ? setStickyClass("sticky") : setStickyClass("relative");
+        windowHeight > 40
+          ? setStickyClass("sticky")
+          : setStickyClass("relative");
       };
 
       window.addEventListener("scroll", stickNavbar);
@@ -69,21 +70,27 @@ const Navbar = () => {
     setOpenSearch((prev) => !prev);
   };
 
-  if (pathname.startsWith('/studio')) {
-    return null; 
+  if (pathname.startsWith("/studio")) {
+    return null;
   }
 
   return (
-    <div className={`w-full flex flex-col ${stickyClass === 'sticky' && 'fixed'} z-50`}>
-      <div className={` ${stickyClass === 'sticky' ?'hidden' : 'flex'} w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[45px] bg-tertiaryAccent hover:bg-secondary group cursor-pointer`}>
+    <div
+      className={`w-full flex flex-col ${stickyClass === "sticky" && "fixed"} z-50`}
+    >
+      <div
+        className={` ${stickyClass === "sticky" ? "hidden" : "flex"} w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[45px] bg-tertiaryAccent hover:bg-secondary group cursor-pointer`}
+      >
         <IconSearch className="h-4 w-4 md:h-6 md:w-6 fill-background cursor-pointer group-hover:fill-background" />
         <h4 className="font-montserrat text-[.525rem] md:text-[.65rem] uppercase  font-bold text-background cursor-pointer group-hover:text-background">
           Explore the latest updates, visit our latest posts now!
         </h4>
       </div>
 
-      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-full bg-background flex flex-col justify-between items-center shadow-md "> 
-        <div className={`hidden ${stickyClass === 'sticky' ?'hidden' : 'md:flex'} justify-between h-[56px] w-full py-[1.2rem]`}>
+      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-full bg-background flex flex-col justify-between items-center shadow-md ">
+        <div
+          className={`hidden ${stickyClass === "sticky" ? "hidden" : "md:flex"} justify-between h-[56px] w-full py-[1.2rem]`}
+        >
           <ul className="hidden md:flex gap-4 transition-all duration-[350ms] ease-in-out ">
             {topLinks.map((item) => (
               <li key={item.id} className="">
@@ -96,68 +103,79 @@ const Navbar = () => {
                   }`}
                 >
                   {item.name}
-               
                 </Link>
               </li>
             ))}
           </ul>
           <div className="flex gap-2 items-center">
             <div className="h-[40px] w-[40px] rounded-full border-2 border-solid border-[#000] flex items-center justify-center group cursor-pointer">
-              <IconFacebook className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out"/>
+              <IconFacebook className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out" />
             </div>
             <div className="h-[40px] w-[40px] rounded-full border-2 border-solid border-[#000] flex items-center justify-center group cursor-pointer">
-              <IconInstagram className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out"/>
+              <IconInstagram className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out" />
             </div>
             <div className="h-[40px] w-[40px] rounded-full border-2 border-solid border-[#000] flex items-center justify-center group cursor-pointer">
-              <IconEmail className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out"/>
+              <IconEmail className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out" />
             </div>
           </div>
         </div>
 
-        <div className={` flex justify-between w-full ${windowWidth > 767 ? (stickyClass === 'sticky' ? 'h-[90px]' : 'h-[70px]') : 'h-[70px]'} gap-8 z-50`}>
+        <div
+          className={` flex justify-between w-full ${windowWidth > 767 ? (stickyClass === "sticky" ? "h-[90px]" : "h-[70px]") : "h-[70px]"} gap-8 z-50`}
+        >
           <div className="h-full flex items-center justify-center">
-            <h3 className="font-extrabold text-[2rem] font-montserrat text-secondary">PMLogo</h3>
+            <h3 className="font-extrabold text-[2rem] font-montserrat text-secondary">
+              PMLogo
+            </h3>
           </div>
-          <ul className="hidden md:flex relative gap-6 grow m-auto justify-end transition-all duration-[350ms] ease-in-out items-center">
+          <ul className="hidden md:flex relative gap-6 grow m-auto justify-end items-center">
             {items.map((item) => (
-              <li key={item.id} className="relative">
+              <li key={item.id} className="relative group">
                 <Link
                   href={item.path}
-                  className={`relative block transition-all duration-[350ms] ease-in-out font-black text-[1.2rem] ${
+                  className={`relative block transition-all duration-500 ease-in-out font-black text-[1.2rem] ${
                     item.path === pathname
                       ? "text-foreground"
                       : "hover:text-foreground"
                   }`}
                 >
                   {item.name}
+
                   <span
-                    className={`absolute inset-0 top-[.2rem] bottom-[-.2rem] left-0 right-0 border-t-[3px] border-b-[3px] border-[#FFB4A0] transition-all duration-[350ms] ease-in-out opacity-0 ${
+                    className={`absolute inset-0 top-[.2rem] bottom-[-.2rem] left-0 right-0 border-t-[3px] border-b-[3px] border-[#FFB4A0] transition-all duration-500 ease-in-out opacity-0 scale-y-0  ${
                       item.path === pathname
-                        ? "opacity-100 top-[0] bottom-[-.2rem]"
-                        : ""
-                    } hover:opacity-100 hover:top-[0] hover:bottom-[-.2rem]`}
+                        ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]"
+                        : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]"
+                    }`}
                   ></span>
                 </Link>
               </li>
             ))}
-             {stickyClass === "sticky" && (
+            {stickyClass === "sticky" && (
               <button className="bg-transparent text-[1.2rem] font-extrabold border-2 border-secondary rounded-[25px] hover:text-secondary px-[.7rem] py-[.2em] flex items-center justify-center">
                 Subscribe
               </button>
             )}
           </ul>
+
           <div className="flex gap-6 items-center">
             <ThemeSwitch />
-            <div onClick={toggleSearch} className="h-[50px] w-[50px] hover:bg-tertiaryAccent bg-tertiary rounded-full border-solid border-[#000] flex items-center justify-center group cursor-pointer">
-              {openSearch ? <IconClose className="h-[20px] w-[20px] "/> :  <IconSearch className="h-[20px] w-[20px] "/>}
-             
+            <div
+              onClick={toggleSearch}
+              className="h-[50px] w-[50px] hover:bg-tertiaryAccent bg-tertiary rounded-full border-solid border-[#000] flex items-center justify-center group cursor-pointer"
+            >
+              {openSearch ? (
+                <IconClose className="h-[20px] w-[20px] " />
+              ) : (
+                <IconSearch className="h-[20px] w-[20px] " />
+              )}
             </div>
             <MobileMenu />
-           
           </div>
-          {openSearch && <SearchBar windowWidth={windowWidth} openSearch={openSearch}/>} 
+          {openSearch && (
+            <SearchBar windowWidth={windowWidth} openSearch={openSearch} />
+          )}
         </div>
-  
       </div>
     </div>
   );
