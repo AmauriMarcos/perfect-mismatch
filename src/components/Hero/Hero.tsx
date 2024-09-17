@@ -1,8 +1,31 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import {client} from '../../sanity/lib/client';
 
-const Hero = () => {
+async function getData(){
+  const query = `
+      *[_type == "post"] | order(_createdAt desc)[0] {
+      author->{
+        name,
+        bio,
+        image
+      },
+      title,
+      slug,
+      body,
+      _createdAt
+    }`;
+  
+  const data = await client.fetch(query);
+
+  return data;
+}
+
+const Hero = async () => {
+  const data = await getData();
+
+  console.log(data);
   return (
     <div className=" w-full flex justify-between ">
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8">
