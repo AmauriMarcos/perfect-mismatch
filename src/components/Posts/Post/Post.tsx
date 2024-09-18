@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import { BlogPost } from "@/lib/interface";
 
-
-const Post = () => {
+const Post = ({ title, author, slug, mainImage, body, _createdAt }: BlogPost) => {
   return (
     <div className="h-full w-full bg-transparent rounded-sm flex  gap-4  mb-10 flex-col md:flex-row">
       <div className="h-[232px] min-w-[310px] ">
@@ -22,7 +22,7 @@ const Post = () => {
           </p>
         </div>
         <h2 className="font-montserrat uppercase font-extrabold text-[1.2rem] text-left">
-          Faster font loading with Font events
+          {title}
         </h2>
 
         <div className="flex items-center gap-2 ">

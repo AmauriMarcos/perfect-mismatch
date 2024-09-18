@@ -1,31 +1,21 @@
+
+'use client';
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {client} from '../../sanity/lib/client';
+import { getPosts } from "../../../server/actions";
+import { useQuery } from "@tanstack/react-query";
 
-async function getData(){
-  const query = `
-      *[_type == "post"] | order(_createdAt desc)[0] {
-      author->{
-        name,
-        bio,
-        image
-      },
-      title,
-      slug,
-      body,
-      _createdAt
-    }`;
-  
-  const data = await client.fetch(query);
+const Hero = () => {
+  const {data, isLoading, error} = useQuery({
+    queryKey: ['posts'],
+    queryFn: getPosts,
+  });
 
-  return data;
-}
+  if(isLoading) <p>Loading...</p>
+  if(error) <p>Something went wrong!</p>
 
-const Hero = async () => {
-  const data = await getData();
-
-  console.log(data);
+  if(data)
   return (
     <div className=" w-full flex justify-between ">
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8">

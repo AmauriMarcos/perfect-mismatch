@@ -1,7 +1,19 @@
 "use client";
 import React from "react";
+import { getCategories} from "../../../server/actions";
+import { useQuery } from "@tanstack/react-query";
 
 const Categories = () => {
+  const {data, isLoading, error} = useQuery({
+    queryKey: ['categories'],
+    queryFn:getCategories,
+  });
+
+  if(isLoading) <p>Loading...</p>
+  if(error) <p>Something went wrong!</p>
+
+  console.log("Categories", data);
+
   const categories = [
     {
       id: 1,
