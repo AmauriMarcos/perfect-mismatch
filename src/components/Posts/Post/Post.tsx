@@ -4,7 +4,12 @@ import { Button } from "@/components/ui/button";
 import { BlogPost } from "@/lib/interface";
 import { urlFor } from "@/sanity/lib/image";
 
+/* title, author, slug, mainImage, body, _createdAt */
 const Post = ({ title, author, slug, mainImage, body, _createdAt }: BlogPost) => {
+
+  console.log(slug)
+  console.log(body)
+
   return (
     <div className="h-full w-full bg-transparent rounded-sm flex  gap-4  mb-10 flex-col md:flex-row">
       <div className="h-[232px] min-w-[310px] ">
@@ -19,7 +24,7 @@ const Post = ({ title, author, slug, mainImage, body, _createdAt }: BlogPost) =>
       <div className="flex flex-col gap-2 p-4">
         <div className="font-inter  w-full flex items-start ">
           <p className="text-slate-950 font-normal text-[.75rem]">
-            17 September 2024
+            {_createdAt}
           </p>
         </div>
         <h2 className="font-montserrat uppercase font-extrabold text-[1.2rem] text-left">
@@ -27,7 +32,7 @@ const Post = ({ title, author, slug, mainImage, body, _createdAt }: BlogPost) =>
         </h2>
 
         <div className="flex items-center gap-2 ">
-          <p className="font-inter font-light text-[.8rem]">author</p>
+          <p className="font-inter font-light text-[.8rem]">{author?.name}</p>
           <p className="font-bold text-secondary font-inter text-[.8rem]">
             Amauri Santos
           </p>
