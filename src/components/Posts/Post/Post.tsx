@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { BlogPost } from "@/lib/interface";
+import { urlFor } from "@/sanity/lib/image";
 
 const Post = ({ title, author, slug, mainImage, body, _createdAt }: BlogPost) => {
   return (
@@ -12,7 +13,7 @@ const Post = ({ title, author, slug, mainImage, body, _createdAt }: BlogPost) =>
           alt="test"
           height={500}
           width={500}
-          src="https://images.pexels.com/photos/3496763/pexels-photo-3496763.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src={urlFor(mainImage).url()}
         />
       </div>
       <div className="flex flex-col gap-2 p-4">
