@@ -10,14 +10,12 @@ const Posts = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["posts"],
     queryFn: getPosts,
-    staleTime: 0, // ensure no stale data
-    refetchOnWindowFocus: true, // refetch when window is focused
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Something went wrong!</p>;
+  if (isLoading) <p>Loading...</p>;
+  if (error) <p>Something went wrong!</p>;
 
-  console.log(data);
+  console.log(data)
 
   return (
     <div className="mt-5 md:mt-[50px] flex flex-col gap-4">
@@ -32,7 +30,7 @@ const Posts = () => {
       </div>
       {data?.map((post: BlogPost) => (
         <Post
-          key={post.slug.current}
+          key={post.slug.current} 
           title={post.title}
           author={post.author}
           slug={post.slug}
