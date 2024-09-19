@@ -1,7 +1,7 @@
 import Categories from "@/components/Categories/Categories";
 import Hero from "@/components/Hero/Hero";
 import Posts from "@/components/Posts/Posts";
-import { getPosts, getCategories } from "../../server/actions";
+import { getPosts, getCategories } from "./server/actions";
 import {
   dehydrate,
   HydrationBoundary,
@@ -13,12 +13,17 @@ export default async function Home() {
   await queryClient.prefetchQuery({
     queryKey: ["posts"],
     queryFn: getPosts,
+    
   });
 
   await queryClient.prefetchQuery({
     queryKey: ["categories"],
     queryFn: getCategories,
   });
+
+  const test = await getPosts();
+
+  console.log("***********", test)
 
   return (
     <div className="mt-5 md:mt-[50px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col">

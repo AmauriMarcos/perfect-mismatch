@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { getPosts } from "../../../server/actions";
+import { getPosts } from "../../app/server/actions";
 import { useQuery } from "@tanstack/react-query";
 
 const Hero = () => {

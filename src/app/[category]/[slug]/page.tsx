@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { getPostBySlug } from "../../../../server/actions";
+import { getPostBySlug } from "../../server/actions";
 import { useQuery } from "@tanstack/react-query";
 import { ConfigResolutionError } from "sanity";
 import { PortableText } from "next-sanity";
@@ -12,7 +12,8 @@ import { formatDateString } from "@/util/formateDateString";
 export default function BlogPost({ params }: { params: { slug: string } }) {
   const { data, isLoading, error } = useQuery({
     queryKey: ["post", params.slug], // Include `slug` in the queryKey
-    queryFn: () => getPostBySlug(params.slug), // Pass `slug` to `queryFn`
+    queryFn: () => getPostBySlug(params.slug),
+  // Pass `slug` to `queryFn`
   });
 
   if (isLoading) return <p>Loading...</p>;

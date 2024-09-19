@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { getCategories} from "../../../server/actions";
+import { getCategories} from "../../app/server/actions";
 import { useQuery } from "@tanstack/react-query";
 
 const Categories = () => {
