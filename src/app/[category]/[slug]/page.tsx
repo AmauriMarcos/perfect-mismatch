@@ -1,22 +1,17 @@
-"use client";
+
 import React from "react";
 import Image from "next/image";
 import { getPostBySlug } from "../../server/actions";
-import { useQuery } from "@tanstack/react-query";
 import { PortableText } from "next-sanity";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { urlFor } from "@/sanity/lib/image";
 import { formatDateString } from "@/util/formateDateString";
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["post", params.slug],
-    queryFn: () => getPostBySlug(params.slug),
-  });
+export const revalidate = 0;
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Something went wrong!</p>;
-
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+  const data = await getPostBySlug(params.slug);
+  
   return (
     <div className="mt-[35px] md:mt-[5rem] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col">
       <div className="flex flex-col gap-2 m-auto items-center">

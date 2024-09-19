@@ -3,19 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { getPosts } from "../../app/server/actions";
-import { useQuery } from "@tanstack/react-query";
+
 
 const Hero = () => {
-  const {data, isLoading, error} = useQuery({
-    queryKey: ['posts'],
-    queryFn: getPosts,
-  });
-
-  if(isLoading) <p>Loading...</p>
-  if(error) <p>Something went wrong!</p>
-
-  if(data)
+ 
   return (
     <div className=" w-full flex justify-between ">
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8">

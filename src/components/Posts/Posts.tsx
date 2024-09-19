@@ -2,20 +2,15 @@
 import React from "react";
 import Post from "./Post/Post";
 import Image from "next/image";
-import { getPosts } from "../../app/server/actions";
-import { useQuery } from "@tanstack/react-query";
 import { BlogPost } from "@/lib/interface";
 
 export const revalidate = 0;
 
-const Posts = () => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["posts"],
-    queryFn: getPosts,
-  });
+interface PostsProps {
+  posts: BlogPost[]; 
+}
 
-  if (isLoading) <div><p>Loading...</p></div>;
-  if (error) <div><p>Something went wrong</p></div>;
+const Posts: React.FC<PostsProps> = ({ posts }) => {
 
   return (
     <div className="mt-5 md:mt-[50px] flex flex-col gap-4">
@@ -28,7 +23,7 @@ const Posts = () => {
           width={5}
         />
       </div>
-      {data?.map((post: BlogPost) => (
+      {posts?.map((post: BlogPost) => (
         <Post
           key={post.slug.current} 
           title={post.title}
