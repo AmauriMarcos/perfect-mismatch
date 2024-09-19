@@ -9,7 +9,7 @@ interface Slug {
     current: string;
 }
 
-interface Category {
+export interface Category {
     title: string; // Title of the category
     _type: string;
 }

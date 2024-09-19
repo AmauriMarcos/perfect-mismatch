@@ -74,8 +74,6 @@ const Navbar = () => {
     return null;
   }
 
-  console.log("pathname --------->", pathname);
-
   return (
     <div
       className={`w-full flex flex-col ${stickyClass === "sticky" && "fixed"} z-50`}
@@ -165,6 +163,11 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
+            {stickyClass === "sticky" && (
+              <button className="bg-transparent text-[1.2rem] font-extrabold border-2 border-secondary rounded-[25px] hover:text-secondary px-[.7rem] py-[.2em]">
+                Subscribe
+              </button>
+            )}
           </ul>
 
           <div className="flex gap-6 items-center">

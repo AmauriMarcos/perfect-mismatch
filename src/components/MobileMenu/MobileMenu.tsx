@@ -4,12 +4,12 @@ import Link from "next/link";
 
 const items = [
   { id: 1, name: 'Home', path: '/' },
-  { id: 2, name: 'About', path: '/about' },
-  { id: 3, name: 'Recipes', path: '/recipes' },
-  { id: 4, name: 'Travels', path: '/travels' },
-  { id: 5, name: 'Crafts', path: '/crafts' },
-  { id: 6, name: 'Insights', path: '/insights' },
-  { id: 7, name: 'Contact', path: '/contact' },
+  { id: 2, name: 'About', path: '/blog/about' },
+  { id: 3, name: 'Recipes', path: '/blog/recipes' },
+  { id: 4, name: 'Travels', path: '/blog/travels' },
+  { id: 5, name: 'Crafts', path: '/blog/crafts' },
+  { id: 6, name: 'Insights', path: '/blog/insights' },
+  { id: 7, name: 'Contact', path: '/blog/contact' },
 ];
 
 const MobileMenu = () => {
@@ -79,7 +79,7 @@ const stickNavbar = () => {
       {menuOpen && (
         <div className={`absolute ${stickyClass === 'sticky' ? 'top-[68px]' : 'top-[108px]'}  z-50 left-0 bg-secondary w-full h-[100vh] flex flex-col justify-between shadow-[0 0 10px rgba(0,0,0,0.5)]`}>
           {/* Menu items */}
-          <div className="flex h-[90%] flex-col gap-2 items-center justify-center ">
+          <div className="flex h-[86%] flex-col gap-2 items-center justify-center ">
             {items.map((item) => (
               <Link
                 key={item.id}
