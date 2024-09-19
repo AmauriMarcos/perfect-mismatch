@@ -29,8 +29,8 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </p>
         </div>
       </div>
-      <div className="w-full prose-li:marker:text-tertiaryAccent  prose prose-lg m-auto dark:prose-invert prose-h2:underline prose-headings:font-montserrat prose-p:font-inter">
-        <h1 className=" font-montserrat font-extrabold text-3xl sm:text-[3rem] text-center tracking-tight leading-tight">
+      <div className="w-full prose-h2:text-2xl prose-h2:md:text-[30px] prose-li:marker:text-tertiaryAccent  prose prose-lg m-auto dark:prose-invert prose-h2:underline prose-headings:font-montserrat prose-p:font-inter">
+        <h1 className=" font-montserrat font-extrabold mt-[1.5rem] sm:mt-[0] text-3xl sm:text-[3rem] text-center tracking-tight leading-tight">
           {data.title}
         </h1>
 

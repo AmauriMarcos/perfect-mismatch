@@ -21,7 +21,7 @@ const Hero: React.FC<HeroProps> = ({ latestPost }) => {
     <div className=" w-full flex justify-between ">
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8">
         <Image
-          className="object-cover h-[360px] min-w-0 md:min-w-[500px] "
+          className="object-cover h-[260px] md:h-[360px] min-w-0 md:min-w-[500px] "
           height={360}
           width={500}
           src={urlFor(latestPost.mainImage).url()}
@@ -33,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ latestPost }) => {
               {formatDateString(latestPost._createdAt)}
             </p>
           </div>
-          <h2 className="font-extrabold text-[2rem] md:text-[2.4rem]">
+          <h2 className="font-montserrat uppercase font-extrabold text-[1.2rem] text-left md:text-[2.4rem]">
             {latestPost.title}
           </h2>
           <div className="flex items-center gap-2 ">

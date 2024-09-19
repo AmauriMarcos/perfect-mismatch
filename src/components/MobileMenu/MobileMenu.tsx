@@ -79,7 +79,7 @@ const stickNavbar = () => {
       {menuOpen && (
         <div className={`absolute ${stickyClass === 'sticky' ? 'top-[68px]' : 'top-[108px]'}  z-50 left-0 bg-secondary w-full h-[100vh] flex flex-col justify-between shadow-[0 0 10px rgba(0,0,0,0.5)]`}>
           {/* Menu items */}
-          <div className="flex flex-col gap-2 items-center justify-center flex-grow">
+          <div className="flex h-[90%] flex-col gap-2 items-center justify-center ">
             {items.map((item) => (
               <Link
                 key={item.id}
