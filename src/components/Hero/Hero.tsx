@@ -3,10 +3,20 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { BlogPost, Author } from "@/lib/interface";
+import { urlFor } from "@/sanity/lib/image";
+import { PortableText } from "next-sanity";
+import { formatDateString } from "@/util/formateDateString";
+import Link from "next/link";
 
+interface HeroProps {
+  latestPost: BlogPost; // Define the type of latestPost
+}
+const Hero: React.FC<HeroProps> = ({ latestPost }) => {
+  const categoryTitle = latestPost.categories[0]?.title.toLowerCase();
+  const combinedSlug = `${categoryTitle}/${latestPost.slug.current}`;
 
-const Hero = () => {
- 
+  const authorName = (latestPost.author as Author).name;
   return (
     <div className=" w-full flex justify-between ">
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8">
@@ -14,34 +24,33 @@ const Hero = () => {
           className="object-cover h-[360px] min-w-0 md:min-w-[500px] "
           height={360}
           width={500}
-          src="https://images.pexels.com/photos/3496763/pexels-photo-3496763.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src={urlFor(latestPost.mainImage).url()}
           alt="Malta"
         />
         <div className="flex flex-col gap-2 items-start">
           <div className="font-inter  w-full flex items-start ">
             <p className="text-slate-950 font-normal text-[.75rem]">
-              Latest post
+              {formatDateString(latestPost._createdAt)}
             </p>
           </div>
           <h2 className="font-extrabold text-[2rem] md:text-[2.4rem]">
-            Eating pizza in Italy
+            {latestPost.title}
           </h2>
           <div className="flex items-center gap-2 ">
             <p className="font-inter font-light text-[.8rem]">author</p>
             <p className="font-bold text-secondary font-inter text-[.8rem]">
-              Amauri Santos
+              {authorName}
             </p>
           </div>
-          <p className="leading-6 font-inter text-center md:text-left ">
-            Cras venenatis quam ac nunc natoque hac maecenas. Non pretium
-            molestie maecenas convallis ipsum faucibus venenatis quam. At aptent
-            ullamcorper, ad aptent feugiat netus est scelerisque. Felis viverra
-            class dignissim scelerisque imperdiet ligula ornare.
-          </p>
-
-          <div className="w-full flex justify-start md:w-auto">
-            <Button variant="tertiary">Read more</Button>
+          <div className="line-clamp-2 md:line-clamp-3">
+            <PortableText value={latestPost.body} />
           </div>
+
+          <div className="w-full flex justify-start">
+          <Button asChild variant="outline">
+            <Link href={`/${combinedSlug}`}>Read more</Link>
+          </Button>
+        </div>
         </div>
       </div>
     </div>

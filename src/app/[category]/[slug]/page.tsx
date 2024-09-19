@@ -6,11 +6,13 @@ import { PortableText } from "next-sanity";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { urlFor } from "@/sanity/lib/image";
 import { formatDateString } from "@/util/formateDateString";
+import { Author } from "@/lib/interface";
 
 export const revalidate = 0;
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const data = await getPostBySlug(params.slug);
+  const authorName = (data.author as Author).name;
   
   return (
     <div className="mt-[35px] md:mt-[5rem] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col">
@@ -23,7 +25,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <div className=" gap-2 flex items-end w-full justify-end">
           <p className="font-inter font-light text-[.8rem]">author</p>
           <p className="font-bold text-secondary font-inter text-[.8rem]">
-            Amauri Santos
+            {authorName}
           </p>
         </div>
       </div>

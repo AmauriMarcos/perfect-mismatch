@@ -20,7 +20,6 @@ const Post = ({
   const categoryTitle = categories[0]?.title.toLowerCase();
   const combinedSlug = `${categoryTitle}/${slug.current}`;
 
-
   return (
     <div className="h-full w-full bg-transparent rounded-sm flex  gap-4  mb-10 flex-col md:flex-row">
       <div className="h-[232px] min-w-[310px] ">

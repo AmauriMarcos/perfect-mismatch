@@ -1,4 +1,4 @@
-interface Author {
+export interface Author {
     name: string;
     bio: Array<object>; // Adjust this if you have a specific shape for `bio`
     image: string | null;
