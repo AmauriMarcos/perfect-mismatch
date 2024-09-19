@@ -1,17 +1,7 @@
 "use client";
 import React from "react";
-import { getCategories} from "../../app/server/actions";
-import { useQuery } from "@tanstack/react-query";
 
 const Categories = () => {
-  const {data, isLoading, error} = useQuery({
-    queryKey: ['categories'],
-    queryFn:getCategories,
-  });
-
-  if(isLoading) <p>Loading...</p>
-  if(error) <p>Something went wrong!</p>
-
   const categories = [
     {
       id: 1,
@@ -46,10 +36,7 @@ const Categories = () => {
       url: "https://images.unsplash.com/photo-1612278675615-7b093b07772d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
     },
   ];
-  /* 
-  const handleRedirect = (path) => {
-    navigate(path);
-  }; */
+
 
   return (
     <div className="categories flex flex-col mt-10 items-center py-2 ">
