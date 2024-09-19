@@ -7,7 +7,6 @@ import Link from "next/link";
 import {formatDateString} from '../../../util/formateDateString';
 import { PortableText } from "next-sanity";
 
-/* title, author, slug, mainImage, body, _createdAt */
 const Post = ({
   title,
   author,
@@ -20,7 +19,7 @@ const Post = ({
 
   const categoryTitle = categories[0]?.title.toLowerCase();
   const combinedSlug = `${categoryTitle}/${slug.current}`;
-  /* line-clamp-3 */
+
 
   return (
     <div className="h-full w-full bg-transparent rounded-sm flex  gap-4  mb-10 flex-col md:flex-row">

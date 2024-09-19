@@ -21,10 +21,6 @@ export default async function Home() {
     queryFn: getCategories,
   });
 
-  const test = await getPosts();
-
-  console.log("***********", test)
-
   return (
     <div className="mt-5 md:mt-[50px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col">
       <HydrationBoundary state={dehydrate(queryClient)}>
