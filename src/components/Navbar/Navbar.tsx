@@ -74,6 +74,8 @@ const Navbar = () => {
     return null;
   }
 
+  console.log("pathname --------->", pathname);
+
   return (
     <div
       className={`w-full flex flex-col ${stickyClass === "sticky" && "fixed"} z-50`}
@@ -97,9 +99,13 @@ const Navbar = () => {
                 <Link
                   href={item.path}
                   className={`block transition-all duration-[350ms] ease-in-out text-[.875rem] ${
-                    item.path === pathname
-                      ? "text-foreground"
-                      : "hover:text-foreground"
+                    item.path === "/"
+                      ? pathname === "/"
+                        ? "text-foreground"
+                        : "hover:text-foreground"
+                      : pathname.startsWith(item.path)
+                        ? "text-foreground"
+                        : "hover:text-foreground"
                   }`}
                 >
                   {item.name}
@@ -134,28 +140,31 @@ const Navbar = () => {
                 <Link
                   href={item.path}
                   className={`relative block transition-all duration-500 ease-in-out font-black text-[1.2rem] ${
-                    item.path === pathname
-                      ? "text-foreground"
-                      : "hover:text-foreground"
+                    item.path === "/"
+                      ? pathname === "/"
+                        ? "text-foreground" // Active class for "Home"
+                        : "hover:text-foreground" // Hover effect for "Home"
+                      : pathname.startsWith(item.path)
+                        ? "text-foreground" // Active class for other paths
+                        : "hover:text-foreground" // Hover effect for other paths
                   }`}
                 >
                   {item.name}
 
                   <span
-                    className={`absolute inset-0 top-[.2rem] bottom-[-.2rem] left-0 right-0 border-t-[3px] border-b-[3px] border-[#FFB4A0] transition-all duration-500 ease-in-out opacity-0 scale-y-0  ${
-                      item.path === pathname
-                        ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]"
-                        : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]"
+                    className={`absolute inset-0 top-[.2rem] bottom-[-.2rem] left-0 right-0 border-t-[3px] border-b-[3px] border-[#FFB4A0] transition-all duration-500 ease-in-out opacity-0 scale-y-0 ${
+                      item.path === "/"
+                        ? pathname === "/"
+                          ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]" // Active underline for "Home"
+                          : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]" // Hover underline for "Home"
+                        : pathname.startsWith(item.path)
+                          ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]" // Active underline for other paths
+                          : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]" // Hover underline for other paths
                     }`}
-                  ></span>
+                  />
                 </Link>
               </li>
             ))}
-            {stickyClass === "sticky" && (
-              <button className="bg-transparent text-[1.2rem] font-extrabold border-2 border-secondary rounded-[25px] hover:text-secondary px-[.7rem] py-[.2em] flex items-center justify-center">
-                Subscribe
-              </button>
-            )}
           </ul>
 
           <div className="flex gap-6 items-center">

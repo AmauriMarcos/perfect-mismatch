@@ -8,7 +8,12 @@ interface Slug {
     _type: string;
     current: string;
 }
-  
+
+interface Category {
+    title: string; // Title of the category
+    _type: string;
+}
+
 interface ImageAsset {
     _type: string;
     asset: {
@@ -26,8 +31,9 @@ export interface BlogPost {
     title: string;
     slug: Slug;
     mainImage: ImageAsset;
-    author: Author | null; // `author` can be `null`, as shown in the data
-    body: Array<BodyContent>; // The body is an array of objects
+    author: Author | null; // Author can be null
+    body: Array<BodyContent>; // Body is an array of content blocks
     _createdAt: string;
+    categories: Array<Category>; // Categories is an array, even if there’s only one category
 }
   

@@ -11,7 +11,7 @@ const Footer = () => {
   }
 
   return (
-    <div className='min-h-[293px] w-full px-[6%] bg-[#313331]'>
+    <div className='min-h-[150px] w-full px-[6%] bg-[#313331]'>
         <div>
           Footer 1
         </div>

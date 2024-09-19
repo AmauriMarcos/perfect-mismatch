@@ -12,8 +12,6 @@ const Categories = () => {
   if(isLoading) <p>Loading...</p>
   if(error) <p>Something went wrong!</p>
 
-  console.log("Categories", data);
-
   const categories = [
     {
       id: 1,

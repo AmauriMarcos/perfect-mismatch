@@ -4,17 +4,21 @@ import { client } from "../src/sanity/lib/client";
 export async function getPosts() {
   const query = `
         *[_type == "post"] | order(_createdAt desc) {
-        author->{
-          name,
-          bio,
-          image
-        },
-        title,
-        slug,
-        mainImage,
-        body,
-        _createdAt
-    }`;
+            author->{
+                name,
+                bio,
+                image
+            },
+            title,
+            slug,
+            mainImage,
+            body,
+            _createdAt,
+            categories[]->{
+                title
+            }
+        }
+            `;
 
   try {
     const data = await client.fetch(query);
@@ -38,3 +42,30 @@ export async function getCategories() {
     return { error: error };
   }
 }
+
+
+// Update to accept a parameter
+export async function getPostBySlug(slug: string) {
+    const query = `
+          *[_type == "post" && slug.current == $slug][0] {
+              author->{
+                  name,
+                  bio,
+                  image
+              },
+              title,
+              mainImage,
+              body,
+              _createdAt,
+
+          }
+      `;
+    
+    try {
+      const data = await client.fetch(query, { slug });
+      return data;
+    } catch (error) {
+      return { error: error };
+    }
+  }
+  

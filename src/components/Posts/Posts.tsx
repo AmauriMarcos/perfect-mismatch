@@ -15,8 +15,6 @@ const Posts = () => {
   if (isLoading) <p>Loading...</p>;
   if (error) <p>Something went wrong!</p>;
 
-  console.log(data)
-
   return (
     <div className="mt-5 md:mt-[50px] flex flex-col gap-4">
       <div className="w-full">
@@ -36,6 +34,7 @@ const Posts = () => {
           slug={post.slug}
           mainImage={post.mainImage}
           body={post.body}
+          categories={post.categories}
           _createdAt={post._createdAt}
         />
       ))}
