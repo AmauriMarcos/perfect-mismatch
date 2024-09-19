@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
+import { useRouter } from 'next/navigation'
 
 const Categories = () => {
+  const router = useRouter()
   const categories = [
     {
       id: 1,
@@ -37,6 +39,10 @@ const Categories = () => {
     },
   ];
 
+  const goTo = () => {
+    alert("HEY")
+  }
+
 
   return (
     <div className="categories flex flex-col mt-10 items-center py-2 ">
@@ -47,7 +53,7 @@ const Categories = () => {
         {React.Children.toArray(
           categories?.map((category) => {
             return (
-              <div className="relative w-full min-h-[265px] flex justify-center items-center cursor-pointer overflow-hidden p-8 z-5 group">
+              <div onClick={() => router.push(`/blog/${category.path}`)} className="relative w-full min-h-[265px] flex justify-center items-center cursor-pointer overflow-hidden p-8 z-5 group">
                 <div
                   style={{ backgroundImage: `url(${category.url})` }}
                   className="absolute inset-0 bg-center bg-no-repeat bg-cover opacity-80 transition-transform duration-700 ease-in-out group-hover:scale-110"
