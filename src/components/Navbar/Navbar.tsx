@@ -53,17 +53,17 @@ const Navbar = () => {
 
   const items = [
     { id: 1, name: "Home", path: "/" },
-    { id: 3, name: "Recipes", path: "/recipes" },
-    { id: 4, name: "Travels", path: "/travels" },
-    { id: 5, name: "Crafts", path: "/crafts" },
-    { id: 6, name: "Insights", path: "/insights" },
+    { id: 3, name: "Recipes", path: "recipes" },
+    { id: 4, name: "Travels", path: "travels" },
+    { id: 5, name: "Crafts", path: "crafts" },
+    { id: 6, name: "Insights", path: "insights" },
   ];
 
   const topLinks = [
     { id: 1, name: "Home", path: "/" },
-    { id: 2, name: "About", path: "/about" },
-    { id: 3, name: "Contact", path: "/contact" },
-    { id: 4, name: "Subscribe", path: "/subscribe" },
+    { id: 2, name: "About", path: "about" },
+    { id: 3, name: "Contact", path: "contact" },
+    { id: 4, name: "Subscribe", path: "subscribe" },
   ];
 
   const toggleSearch = () => {
@@ -97,13 +97,13 @@ const Navbar = () => {
             {topLinks.map((item) => (
               <li key={item.id} className="">
                 <Link
-                  href={item.path}
+                 href={item.path === '/' ? '/' : `/blog/${item.path}`}
                   className={`block transition-all duration-[350ms] ease-in-out text-[.875rem] ${
                     item.path === "/"
                       ? pathname === "/"
                         ? "text-foreground"
                         : "hover:text-foreground"
-                      : pathname.startsWith(item.path)
+                      : pathname.includes(item.path)
                         ? "text-foreground"
                         : "hover:text-foreground"
                   }`}
@@ -138,13 +138,13 @@ const Navbar = () => {
             {items.map((item) => (
               <li key={item.id} className="relative group">
                 <Link
-                  href={item.path}
+                  href={item.path === '/' ? '/' : `/blog/${item.path}`}
                   className={`relative block transition-all duration-500 ease-in-out font-black text-[1.2rem] ${
                     item.path === "/"
                       ? pathname === "/"
                         ? "text-foreground" // Active class for "Home"
                         : "hover:text-foreground" // Hover effect for "Home"
-                      : pathname.startsWith(item.path)
+                      : pathname.includes(item.path)
                         ? "text-foreground" // Active class for other paths
                         : "hover:text-foreground" // Hover effect for other paths
                   }`}
@@ -157,7 +157,7 @@ const Navbar = () => {
                         ? pathname === "/"
                           ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]" // Active underline for "Home"
                           : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]" // Hover underline for "Home"
-                        : pathname.startsWith(item.path)
+                        : pathname.includes(item.path)
                           ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]" // Active underline for other paths
                           : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]" // Hover underline for other paths
                     }`}
