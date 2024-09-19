@@ -39,11 +39,7 @@ const Categories = () => {
     },
   ];
 
-  const goTo = () => {
-    alert("HEY")
-  }
-
-
+ 
   return (
     <div className="categories flex flex-col mt-10 items-center py-2 ">
       <h2 className="text-2xl font-normal mb-8 uppercase tracking-wide text-center sm:text-xl">

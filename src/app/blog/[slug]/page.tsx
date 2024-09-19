@@ -6,10 +6,6 @@ import Image from "next/image";
 
 export const revalidate = 0;
 
-interface PostsProps {
-  posts: BlogPost[];
-}
-
 const DynamicPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
 
@@ -28,7 +24,7 @@ const DynamicPage = async ({ params }: { params: { slug: string } }) => {
             <p className="text-secondary font-thin text-2xl md:text-3xl">
               {`We found `}
               <span className="font-bold my-2">{postCount}</span>
-              <span  className="ml-2">{postCount === 1 ? 'post' : 'posts'}</span>
+              <span className="ml-2">{postCount === 1 ? "post" : "posts"}</span>
               {` related to ${slug}`}
             </p>
             <Posts posts={posts} />
@@ -37,12 +33,18 @@ const DynamicPage = async ({ params }: { params: { slug: string } }) => {
       } else {
         content = (
           <div className="mt-5 md:mt-[50px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col items-center justify-center gap-6">
-            <Image className="" src='/question.png' height={100} width={100} alt="no data"/>
-    
+            <Image
+              className=""
+              src="/question.png"
+              height={100}
+              width={100}
+              alt="no data"
+            />
+
             <p className="text-secondary font-thin text-2xl md:text-3xl text-center">
               {`Hmm, we don’t have any `}
-              <span className="font-bold my-2">'{slug}'</span>
-              {`posts available at the moment. Feel free to browse our latest articles or suggest topics you'd like to see! `}
+              <span className="font-bold my-2">{slug}</span>
+              {` posts available at the moment. Feel free to browse our latest articles or suggest topics you'd like to see! `}
             </p>
           </div>
         );

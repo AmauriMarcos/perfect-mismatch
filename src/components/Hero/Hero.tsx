@@ -21,6 +21,7 @@ const Hero: React.FC<HeroProps> = ({ latestPost }) => {
     <div className=" w-full flex justify-between ">
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8">
         <Image
+          priority
           className="object-cover h-[260px] md:h-[360px] min-w-0 md:min-w-[500px] "
           height={360}
           width={500}
