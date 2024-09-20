@@ -14,6 +14,7 @@ import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const [openSearch, setOpenSearch] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0); // Initialize with a default value
   const pathname = usePathname();
 
@@ -153,10 +154,10 @@ const Navbar = () => {
                 <IconSearch className="h-[20px] w-[20px] " />
               )}
             </div>
-            <MobileMenu />
+            <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </div>
           {openSearch && (
-            <SearchBar windowWidth={windowWidth} openSearch={openSearch} setOpenSearch={setOpenSearch} />
+            <SearchBar windowWidth={windowWidth} openSearch={openSearch} setOpenSearch={setOpenSearch} setMenuOpen={setMenuOpen} />
           )}
         </div>
       </div>

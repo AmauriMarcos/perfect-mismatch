@@ -2,6 +2,12 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
+interface SearchBarProps {
+  menuOpen: boolean; // Correct type is 'boolean'
+  setMenuOpen:  React.Dispatch<React.SetStateAction<boolean>>;
+
+}
+
 const items = [
   { id: 1, name: 'Home', path: '/' },
   { id: 2, name: 'About', path: '/blog/about' },
@@ -12,8 +18,8 @@ const items = [
   { id: 7, name: 'Contact', path: '/blog/contact' },
 ];
 
-const MobileMenu = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+const MobileMenu: React.FC<SearchBarProps> = ({ menuOpen, setMenuOpen }) => {
+  
   const [stickyClass, setStickyClass] = useState('relative');
 
   const toggleMenu = () => {
@@ -77,7 +83,7 @@ const stickNavbar = () => {
       </div>
         {/* ${stickyClass === 'sticky' && 'fixed'}`} */}
       {menuOpen && (
-        <div className={`absolute ${stickyClass === 'sticky' ? 'top-[68px]' : 'top-[108px]'}  z-50 left-0 bg-secondary w-full h-[100vh] flex flex-col justify-between shadow-[0 0 10px rgba(0,0,0,0.5)]`}>
+        <div className={`  absolute ${stickyClass === 'sticky' ? 'top-[68px]' : 'top-[108px]'}  z-50 left-0 bg-secondary w-full h-[100vh] flex flex-col justify-between shadow-[0 0 10px rgba(0,0,0,0.5)]`}>
           {/* Menu items */}
           <div className="flex h-[86%] flex-col gap-2 items-center justify-center ">
             {items.map((item) => (
@@ -85,7 +91,7 @@ const stickNavbar = () => {
                 key={item.id}
                 onClick={toggleMenu}
                 href={item.path}
-                className="font-inter font-extralight text-[1.6rem] uppercase block px-4 py-2 text-white hover:text-tertiaryAccent transition-colors"
+                className="translate-y-[-2rem] font-inter font-extralight text-[1.6rem] uppercase block px-4 py-2 text-white hover:text-tertiaryAccent transition-colors"
               >
                 {item.name}
               </Link>

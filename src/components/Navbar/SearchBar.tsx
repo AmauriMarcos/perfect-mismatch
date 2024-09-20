@@ -7,10 +7,11 @@ import { useRouter } from 'next/navigation'
 interface SearchBarProps {
     openSearch: boolean; // Correct type is 'boolean'
     setOpenSearch:  React.Dispatch<React.SetStateAction<boolean>>;
+    setMenuOpen:React.Dispatch<React.SetStateAction<boolean>>;
     windowWidth: number;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ openSearch, setOpenSearch, windowWidth }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ openSearch, setOpenSearch, setMenuOpen,  windowWidth,  }) => {
   const router = useRouter()
   const [search, setSearch] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -31,6 +32,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ openSearch, setOpenSearch, window
       const formattedSearch = search.toLowerCase().replace(/\s+/g, '-');
       router.push(`/search/${formattedSearch}`);
       setOpenSearch(false);
+      setMenuOpen(false);
     }
 
   }
@@ -43,10 +45,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ openSearch, setOpenSearch, window
   
   return (
     <div
-      className={`absolute h-[81px] py-[15px] px-[30px] ${windowWidth > 767 ? 'top-[172px]' :  'top-[108px]'}  left-0 z-50 bg-slate-100 w-full flex flex-col justify-between`}
+      className={`absolute h-[81px] py-[15px] px-[30px] ${windowWidth > 767 ? 'top-[172px]' :  'top-[106px]'}  left-0 z-50 bg-slate-100 w-full flex flex-col justify-between`}
     >
       <div className='w-full flex justify-between items-center'>
-        <form className='w-full flex items-center justify-between pr-[60px]'>
+        <form className='w-full flex items-center justify-between pr-[20px]  md:pr-[60px]'>
                 <input 
                     ref={inputRef}
                     value={search} 
@@ -58,7 +60,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ openSearch, setOpenSearch, window
                 />
                 {search.length > 0 && < IconClean onClick={resetSearch} className='fill-gray-600 hover:rotate-12 transition-all duration-[350ms] ease-in-out cursor-pointer h-[20px] w-[20px]'/>}
         </form>
-        <button onClick={() => goToSearchResultsPage(search)} className='mr-6'><IconSearch className='h-[25px] w-[25px]'/></button>
+        <button onClick={() => goToSearchResultsPage(search)} className=' md-0 md:mr-6'><IconSearch className='h-[25px] w-[25px]'/></button>
       </div>
     </div>
   );

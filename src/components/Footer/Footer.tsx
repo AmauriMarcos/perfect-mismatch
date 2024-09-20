@@ -11,15 +11,9 @@ const Footer = () => {
   }
 
   return (
-    <div className='min-h-[150px] w-full px-[6%] bg-[#313331]'>
-        <div>
-          Footer 1
-        </div>
-        <div>
-          Content
-        </div>
-        <div>
-          Bottom
+    <div className='h-auto w-full  bg-[#313331] p-6'>
+        <div className='flex w-full justify-center items-center h-100%'>
+          <h6 className='text-background'>Footer</h6>
         </div>
     </div>
   )
