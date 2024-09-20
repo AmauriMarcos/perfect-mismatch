@@ -45,9 +45,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ openSearch, setOpenSearch, window
   }, [openSearch]);
 
   const goToSearchResultsPage = (search: string) => {
-    const formattedSearch = search.toLowerCase().replace(/\s+/g, '-');
-    router.push(`/search/${formattedSearch}`);
-    setOpenSearch(false);
+    if(search.length >=1) {
+      const formattedSearch = search.toLowerCase().replace(/\s+/g, '-');
+      router.push(`/search/${formattedSearch}`);
+      setOpenSearch(false);
+    }
+
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

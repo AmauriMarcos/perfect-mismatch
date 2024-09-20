@@ -37,7 +37,7 @@ const DynamicPage = async ({ params }: { params: { slug: string } }) => {
           <div className="mt-5 md:mt-[40px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col items-center justify-center mb-[3rem]">
             <LottieAnimation />
 
-            <p className="text-secondary font-thin text-2xl md:text-3xl text-center">
+            <p className="text-primary text-md md:text-2xl text-center">
               {`Hmm, we don’t have any `}
               <span className="font-bold my-2">{slug}</span>
               {` posts available at the moment. Feel free to browse our latest articles or suggest topics you'd like to see! `}
