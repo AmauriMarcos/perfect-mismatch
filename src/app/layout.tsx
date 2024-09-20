@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import { ProvidersTheme } from "./provider";
 
+
 // Import Montserrat for titles
 const montserrat = Montserrat({
   subsets: ["latin"],
