@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState, useRef  } from 'react';
 import { IoIosSearch as IconSearch } from "react-icons/io";
 import { MdCleaningServices as IconClean} from "react-icons/md";

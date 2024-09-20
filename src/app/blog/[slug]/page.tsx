@@ -2,7 +2,7 @@ import React from "react";
 import { BlogPost } from "@/lib/interface";
 import { getPostsByCategory } from "@/app/server/actions";
 import Posts from "@/components/Posts/Posts";
-import Image from "next/image";
+import LottieAnimation from "@/components/LottieAnimation/noDataFoundAnimation";
 
 export const revalidate = 0;
 
@@ -32,14 +32,8 @@ const DynamicPage = async ({ params }: { params: { slug: string } }) => {
         );
       } else {
         content = (
-          <div className="mt-5 md:mt-[50px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col items-center justify-center gap-6">
-            <Image
-              className=""
-              src="/question.png"
-              height={100}
-              width={100}
-              alt="no data"
-            />
+          <div className="mt-5 md:mt-[40px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col items-center justify-center mb-[3rem]">
+            <LottieAnimation />
 
             <p className="text-secondary font-thin text-2xl md:text-3xl text-center">
               {`Hmm, we don’t have any `}

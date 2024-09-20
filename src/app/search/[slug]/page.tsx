@@ -2,7 +2,7 @@ import React from "react";
 import { getPostBySearch } from "@/app/server/actions";
 import { BlogPost } from "@/lib/interface";
 import Posts from "@/components/Posts/Posts";
-import Image from "next/image";
+import LottieAnimation from "@/components/LottieAnimation/searchAnimation";
 
 export const revalidate = 0;
 
@@ -12,7 +12,7 @@ const SearchResults = async ({ params }: { params: { slug: string } }) => {
   const posts: BlogPost[] = await getPostBySearch(slug);
   const postCount = posts.length;
   return (
-    <div className="mt-5 md:mt-[50px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col">
+    <div className="mt-5 md:mt-[50px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col mb-[3rem]">
       {postCount > 0 ? (
         <div>
           <p className="text-secondary font-thin text-2xl md:text-3xl">
@@ -22,15 +22,8 @@ const SearchResults = async ({ params }: { params: { slug: string } }) => {
           <Posts posts={posts} />
         </div>
       ) : (
-        <div className="mt-5 md:mt-[50px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col items-center justify-center gap-6">
-          <Image
-            className=""
-            src="/question.png"
-            height={100}
-            width={100}
-            alt="no data"
-          />
-
+        <div className="mt-5 md:mt-[50px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col items-center justify-center ">
+          <LottieAnimation/>
           <p className="text-secondary font-thin text-2xl md:text-3xl text-center">
             {`Hmm, we don’t have any `}
             <span className="font-bold my-2">{slug}</span>
