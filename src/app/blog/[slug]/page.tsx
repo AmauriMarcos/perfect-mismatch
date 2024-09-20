@@ -3,6 +3,8 @@ import { BlogPost } from "@/lib/interface";
 import { getPostsByCategory } from "@/app/server/actions";
 import Posts from "@/components/Posts/Posts";
 import LottieAnimation from "@/components/LottieAnimation/noDataFoundAnimation";
+import { Box } from "@/components/Motion/Motion";
+import About from "@/components/About/About";
 
 export const revalidate = 0;
 
@@ -45,7 +47,7 @@ const DynamicPage = async ({ params }: { params: { slug: string } }) => {
       }
       break;
     case "about":
-      content = "ABOUT";
+      content = <About/>
       break;
     case "contact":
       content = "CONTACT";
