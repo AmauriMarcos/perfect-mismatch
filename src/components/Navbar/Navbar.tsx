@@ -14,7 +14,6 @@ import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const [openSearch, setOpenSearch] = useState(false);
-  const [stickyClass, setStickyClass] = useState("relative");
   const [windowWidth, setWindowWidth] = useState(0); // Initialize with a default value
   const pathname = usePathname();
 
@@ -30,23 +29,6 @@ const Navbar = () => {
 
       return () => {
         window.removeEventListener("resize", handleWindowResize);
-      };
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const stickNavbar = () => {
-        const windowHeight = window.scrollY;
-        windowHeight > 40
-          ? setStickyClass("sticky")
-          : setStickyClass("relative");
-      };
-
-      window.addEventListener("scroll", stickNavbar);
-
-      return () => {
-        window.removeEventListener("scroll", stickNavbar);
       };
     }
   }, []);
@@ -73,38 +55,33 @@ const Navbar = () => {
   if (pathname.startsWith("/studio")) {
     return null;
   }
-/* box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); */
-  return (
-    <div
-    className={`w-full flex flex-col  z-50`}
 
-    >
+  return (
+    <div className={`w-full flex flex-col z-50`}>
       <div
         className={`flex w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[44px] bg-tertiaryAccent hover:bg-secondary group cursor-pointer`}
       >
         <IconSearch className="h-4 w-4 md:h-6 md:w-6 fill-background cursor-pointer group-hover:fill-background" />
-        <h4 className="font-montserrat text-[.525rem] md:text-[.65rem] uppercase  font-bold text-background cursor-pointer group-hover:text-background">
+        <h4 className="font-montserrat text-[.525rem] md:text-[.65rem] uppercase font-bold text-background cursor-pointer group-hover:text-background">
           Explore the latest updates, visit our latest posts now!
         </h4>
       </div>
 
-      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-full bg-background flex flex-col justify-between items-center  shadow-custom">
-        <div
-          className={`hidden md:flex justify-between h-[56px] w-full py-[1.2rem]`}
-        >
+      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-full bg-background flex flex-col justify-between items-center shadow-custom">
+        <div className={`hidden md:flex justify-between h-[56px] w-full py-[1.2rem]`}>
           <ul className="hidden md:flex gap-4 transition-all duration-[350ms] ease-in-out ">
             {topLinks.map((item) => (
               <li key={item.id} className="">
                 <Link
-                 href={item.path === '/' ? '/' : `/blog/${item.path}`}
+                  href={item.path === '/' ? '/' : `/blog/${item.path}`}
                   className={`block transition-all duration-[350ms] ease-in-out text-[.875rem] ${
                     item.path === "/"
                       ? pathname === "/"
                         ? "text-foreground"
                         : "hover:text-foreground"
                       : pathname.includes(item.path)
-                        ? "text-foreground"
-                        : "hover:text-foreground"
+                      ? "text-foreground"
+                      : "hover:text-foreground"
                   }`}
                 >
                   {item.name}
@@ -125,9 +102,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div
-          className={` flex justify-between w-full ${windowWidth > 767 ?  "h-[70px]" : "h-[70px]"} gap-8 z-50`}
-        >
+        <div className={`flex justify-between w-full ${windowWidth > 767 ? "h-[70px]" : "h-[70px]"} gap-8 z-50`}>
           <div className="h-full flex items-center justify-center">
             <h3 className="font-extrabold text-[2rem] font-montserrat text-secondary">
               PMLogo
@@ -141,11 +116,11 @@ const Navbar = () => {
                   className={`relative block transition-all duration-500 ease-in-out font-black text-[1.2rem] ${
                     item.path === "/"
                       ? pathname === "/"
-                        ? "text-foreground" // Active class for "Home"
-                        : "hover:text-foreground" // Hover effect for "Home"
+                        ? "text-foreground"
+                        : "hover:text-foreground"
                       : pathname.includes(item.path)
-                        ? "text-foreground" // Active class for other paths
-                        : "hover:text-foreground" // Hover effect for other paths
+                      ? "text-foreground"
+                      : "hover:text-foreground"
                   }`}
                 >
                   {item.name}
@@ -154,17 +129,16 @@ const Navbar = () => {
                     className={`absolute inset-0 top-[.2rem] bottom-[-.2rem] left-0 right-0 border-t-[3px] border-b-[3px] border-[#FFB4A0] transition-all duration-500 ease-in-out opacity-0 scale-y-0 ${
                       item.path === "/"
                         ? pathname === "/"
-                          ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]" // Active underline for "Home"
-                          : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]" // Hover underline for "Home"
+                          ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]"
+                          : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]"
                         : pathname.includes(item.path)
-                          ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]" // Active underline for other paths
-                          : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]" // Hover underline for other paths
+                        ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]"
+                        : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]"
                     }`}
                   />
                 </Link>
               </li>
             ))}
-         
           </ul>
 
           <div className="flex gap-6 items-center">
