@@ -5,7 +5,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import useWindowSize from "react-use/lib/useWindowSize";
 import {
   Form,
   FormControl,
@@ -17,9 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import BeatLoader from "react-spinners/BeatLoader";
-import dynamic from "next/dynamic";
-
-const Confetti = dynamic(() => import("react-confetti"), { ssr: false });
+import ConfettiComponent from "../Confetti/Confetti";
 
 const formSchema = z.object({
   username: z.string().min(4, {
@@ -39,7 +36,6 @@ const Contact = () => {
   >("idle");
   const [isLoading, setIsLoading] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
-  const { width, height } = useWindowSize();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -81,14 +77,9 @@ const Contact = () => {
     }
   };
 
-  useEffect(() => {
-    if (showConfetti) {
-      const timer = setTimeout(() => {
-        setShowConfetti(false); // Stop showing confetti after 2 seconds
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [showConfetti]);
+  const handleConfettiComplete = () => {
+    setShowConfetti(false); // Stop showing confetti after animation completes
+  };
 
   return (
     <div className="overflow-x-hidden mt-5 md:mt-[50px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col mb-[5rem]">
@@ -99,20 +90,12 @@ const Contact = () => {
       {submissionStatus === "success" && (
         <>
           {showConfetti && (
-            <Confetti 
-              colors={[
-                "#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5",
-                "#2196f3", "#03a9f4", "#00bcd4", "#009688", "#4CAF50",
-                "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
-                "#FF5722", "#795548", "#FFD700", "#FF1493", "#00FA9A"
-              ]} 
-              numberOfPieces={600} 
-              width={width} 
-              height={height} 
-              recycle={false}
+            <ConfettiComponent
+              numberOfPieces={600}
               tweenDuration={8000}
-          />
-          ) }
+              onConfettiComplete={handleConfettiComplete}
+            />
+          )}
           <div className="text-green-600 text-center mb-4">
             YAY ! Thank you for your message!
           </div>

@@ -6,7 +6,42 @@ import useWindowSize from "react-use/lib/useWindowSize";
 // Dynamically import react-confetti to avoid SSR issues
 const Confetti = dynamic(() => import("react-confetti"), { ssr: false });
 
-const ConfettiComponent = () => {
+interface ConfettiProps {
+  numberOfPieces?: number;
+  colors?: string[];
+  recycle?: boolean;
+  tweenDuration?: number;
+  onConfettiComplete?: () => void;
+}
+
+const ConfettiComponent: React.FC<ConfettiProps> = ({
+  numberOfPieces = 400,
+  colors = [
+    "#f44336",
+    "#e91e63",
+    "#9c27b0",
+    "#673ab7",
+    "#3f51b5",
+    "#2196f3",
+    "#03a9f4",
+    "#00bcd4",
+    "#009688",
+    "#4CAF50",
+    "#8BC34A",
+    "#CDDC39",
+    "#FFEB3B",
+    "#FFC107",
+    "#FF9800",
+    "#FF5722",
+    "#795548",
+    "#FFD700",
+    "#FF1493",
+    "#00FA9A",
+  ],
+  recycle = false,
+  tweenDuration = 7000,
+  onConfettiComplete,
+}) => {
   const { width, height } = useWindowSize();
   const [isClient, setIsClient] = useState(false);
 
@@ -15,39 +50,28 @@ const ConfettiComponent = () => {
     setIsClient(true);
   }, []);
 
+  // Stop showing confetti after animation completes
+  useEffect(() => {
+    if (onConfettiComplete) {
+      const timer = setTimeout(() => {
+        onConfettiComplete();
+      }, tweenDuration);
+      return () => clearTimeout(timer);
+    }
+  }, [onConfettiComplete, tweenDuration]);
+
   if (!isClient) {
     return null;
   }
 
   return (
     <Confetti
-      colors={[
-        "#f44336",
-        "#e91e63",
-        "#9c27b0",
-        "#673ab7",
-        "#3f51b5",
-        "#2196f3",
-        "#03a9f4",
-        "#00bcd4",
-        "#009688",
-        "#4CAF50",
-        "#8BC34A",
-        "#CDDC39",
-        "#FFEB3B",
-        "#FFC107",
-        "#FF9800",
-        "#FF5722",
-        "#795548",
-        "#FFD700",
-        "#FF1493",
-        "#00FA9A",
-      ]}
-      numberOfPieces={400}
+      numberOfPieces={numberOfPieces}
+      colors={colors}
       width={width}
       height={height}
-      recycle={false}
-      tweenDuration={7000}
+      recycle={recycle}
+      tweenDuration={tweenDuration}
     />
   );
 };
