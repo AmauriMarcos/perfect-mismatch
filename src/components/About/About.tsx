@@ -9,12 +9,12 @@ const About = () => {
             Hi there, and welcome!
         </h1>
         <p className="font-inter  text-lg md:text-2xl  text-slate-500 font-normal  my-[2rem]">
-          Hi, I'm Marija! I'm living in Serbia with my wonderful
+          {`Hi, I'm Marija! I'm living in Serbia with my wonderful
           family—my husband and our three energetic kids. I have a sweet tooth
           and love trying new desserts, singing, and spending time with friends
           and loved ones. Family means everything to me, and we enjoy creating
           special moments together. This space is where I share my passion for
-          life, family, and all the little things that make every day special.
+          life, family, and all the little things that make every day special.`}
         </p>
       </div>
 
