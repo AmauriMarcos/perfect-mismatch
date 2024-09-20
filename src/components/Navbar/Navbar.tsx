@@ -76,11 +76,11 @@ const Navbar = () => {
 
   return (
     <div
-    className={`w-full flex flex-col ${stickyClass === "sticky" ? "sm:fixed" : ""} z-50`}
+    className={`w-full flex flex-col  z-50`}
 
     >
       <div
-        className={` ${stickyClass === "sticky" ? "hidden" : "flex"} w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[45px] bg-tertiaryAccent hover:bg-secondary group cursor-pointer`}
+        className={`flex w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[44px] bg-tertiaryAccent hover:bg-secondary group cursor-pointer`}
       >
         <IconSearch className="h-4 w-4 md:h-6 md:w-6 fill-background cursor-pointer group-hover:fill-background" />
         <h4 className="font-montserrat text-[.525rem] md:text-[.65rem] uppercase  font-bold text-background cursor-pointer group-hover:text-background">
