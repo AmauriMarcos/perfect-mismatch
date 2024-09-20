@@ -4,11 +4,8 @@ import { motion } from 'framer-motion'
 
 export const Box = () => {
   const boxRef = useRef(null)
-
-  // Array to hold video references
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
 
-  // List of videos from the public folder
   const videoFiles = [
     'beach.mp4',
     'cake.mp4',
