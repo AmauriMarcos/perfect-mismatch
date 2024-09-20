@@ -4,6 +4,7 @@ import { getPostsByCategory } from "@/app/server/actions";
 import Posts from "@/components/Posts/Posts";
 import LottieAnimation from "@/components/LottieAnimation/noDataFoundAnimation";
 import About from "@/components/About/About";
+import Contact from "@/components/Contact/Contact";
 
 export const revalidate = 0;
 
@@ -49,7 +50,7 @@ const DynamicPage = async ({ params }: { params: { slug: string } }) => {
       content = <About/>
       break;
     case "contact":
-      content = "CONTACT";
+      content = <Contact/>
       break;
     case "subscribe":
       content = "SUBSCRIBE";

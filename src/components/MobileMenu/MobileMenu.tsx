@@ -48,7 +48,7 @@ const MobileMenu = () => {
 const stickNavbar = () => {
   if (window !== undefined) {
     const windowHeight = window.scrollY;
-    windowHeight > 40 ? setStickyClass('sticky') : setStickyClass('relative'); // Pass a string
+    windowHeight > 40 && setStickyClass('relative'); // Pass a string
   }
 };
 

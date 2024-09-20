@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div className="w-full m-auto my-[5rem] mb-[10rem]">
       <div className="w-[85%] md:w-[60%] m-auto">
-        <h1 className="text-center text-[3rem] md:text-[5rem] font-extrabold leading-[1.1]">
+        <h1 className="font-montserrat text-center text-[3rem] md:text-[5rem] font-extrabold leading-[1.1]">
             Hi there, and welcome!
         </h1>
         <p className="font-inter  text-lg md:text-2xl  text-slate-500 font-normal  my-[2rem]">

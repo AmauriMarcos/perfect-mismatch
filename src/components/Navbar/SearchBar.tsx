@@ -58,7 +58,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ openSearch, setOpenSearch, window
   
   return (
     <div
-      className={`absolute h-[81px] py-[15px] px-[30px] ${windowWidth > 767 ? (stickyClass === 'sticky' ? 'top-[90px]' : 'top-[172px]') : (stickyClass === 'sticky' ? 'top-[68px]' : 'top-[108px]')}  left-0 z-50 bg-[#FCE2C8] w-full flex flex-col justify-between`}
+      className={`absolute h-[81px] py-[15px] px-[30px] ${windowWidth > 767 ? 'top-[172px]' :  'top-[108px]'}  left-0 z-50 bg-[#FCE2C8] w-full flex flex-col justify-between`}
     >
       <div className='w-full flex justify-between items-center'>
         <form className='w-full flex items-center justify-between pr-[60px]'>

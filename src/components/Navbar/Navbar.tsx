@@ -73,7 +73,7 @@ const Navbar = () => {
   if (pathname.startsWith("/studio")) {
     return null;
   }
-
+/* box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); */
   return (
     <div
     className={`w-full flex flex-col  z-50`}
@@ -88,9 +88,9 @@ const Navbar = () => {
         </h4>
       </div>
 
-      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-full bg-background flex flex-col justify-between items-center shadow-md ">
+      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-full bg-background flex flex-col justify-between items-center  shadow-custom">
         <div
-          className={`hidden ${stickyClass === "sticky" ? "hidden" : "md:flex"} justify-between h-[56px] w-full py-[1.2rem]`}
+          className={`hidden md:flex justify-between h-[56px] w-full py-[1.2rem]`}
         >
           <ul className="hidden md:flex gap-4 transition-all duration-[350ms] ease-in-out ">
             {topLinks.map((item) => (
@@ -126,7 +126,7 @@ const Navbar = () => {
         </div>
 
         <div
-          className={` flex justify-between w-full ${windowWidth > 767 ? (stickyClass === "sticky" ? "h-[90px]" : "h-[70px]") : "h-[70px]"} gap-8 z-50`}
+          className={` flex justify-between w-full ${windowWidth > 767 ?  "h-[70px]" : "h-[70px]"} gap-8 z-50`}
         >
           <div className="h-full flex items-center justify-center">
             <h3 className="font-extrabold text-[2rem] font-montserrat text-secondary">
@@ -164,11 +164,7 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
-            {stickyClass === "sticky" && (
-              <button className="bg-transparent text-[1.2rem] font-extrabold border-2 border-secondary rounded-[25px] hover:text-secondary px-[.7rem] py-[.2em]">
-                Subscribe
-              </button>
-            )}
+         
           </ul>
 
           <div className="flex gap-6 items-center">
