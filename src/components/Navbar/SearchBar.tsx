@@ -11,29 +11,11 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ openSearch, setOpenSearch, windowWidth }) => {
-  const [stickyClass, setStickyClass] = useState('relative');
   const router = useRouter()
   const [search, setSearch] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    const stickNavbar = () => {
-      if (window !== undefined) {
-        const windowHeight = window.scrollY;
-        windowHeight > 40 ? setStickyClass('sticky') : setStickyClass('relative');
-      }
-    };
 
-    window.addEventListener('scroll', stickNavbar);
-
-    // Run stickNavbar on mount to check the initial scroll position
-    stickNavbar();
-
-    return () => {
-      window.removeEventListener('scroll', stickNavbar);
-    };
-  }, [openSearch]);
-  
   const resetSearch = () => {
     setSearch('');
   }
@@ -61,7 +43,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ openSearch, setOpenSearch, window
   
   return (
     <div
-      className={`absolute h-[81px] py-[15px] px-[30px] ${windowWidth > 767 ? 'top-[172px]' :  'top-[108px]'}  left-0 z-50 bg-[#FCE2C8] w-full flex flex-col justify-between`}
+      className={`absolute h-[81px] py-[15px] px-[30px] ${windowWidth > 767 ? 'top-[172px]' :  'top-[108px]'}  left-0 z-50 bg-slate-100 w-full flex flex-col justify-between`}
     >
       <div className='w-full flex justify-between items-center'>
         <form className='w-full flex items-center justify-between pr-[60px]'>
@@ -71,7 +53,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ openSearch, setOpenSearch, window
                     onChange={(e) => setSearch(e.target.value)} 
                     onKeyDown={handleKeyDown}
                     placeholder='Search...' 
-                    className='placeholder:text-[1.2rem] placeholder:text-[#313331] h-[50px]  placeholder:font-inter w-full bg-transparent border-none pl-[9.5px]  text-[1.2rem] focus-visible:outline-none' 
+                    className='placeholder:text-[1.2rem]  placeholder:text-[#313331] h-[50px]  placeholder:font-inter w-full bg-transparent border-none pl-[9.5px]  text-[1.2rem] focus-visible:outline-none font-inter font-extralight' 
                     type='text'
                 />
                 {search.length > 0 && < IconClean onClick={resetSearch} className='fill-gray-600 hover:rotate-12 transition-all duration-[350ms] ease-in-out cursor-pointer h-[20px] w-[20px]'/>}

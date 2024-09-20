@@ -11,8 +11,9 @@ const SearchResults = async ({ params }: { params: { slug: string } }) => {
 
   const posts: BlogPost[] = await getPostBySearch(slug);
   const postCount = posts.length;
+  console.log(posts)
   return (
-    <div className=" w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col mb-[3rem]">
+    <div className={`${postCount > 0 ? 'md:mt-[50px]' : 'mt-0'} w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col mb-[3rem]`}>
       {postCount > 0 ? (
         <div>
           <p className="text-secondary font-thin text-2xl md:text-3xl">

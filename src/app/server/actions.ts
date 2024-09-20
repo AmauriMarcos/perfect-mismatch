@@ -98,11 +98,12 @@ export async function getPostsByCategory(category: string) {
     return []; 
   }
 }
-
-export async function getPostBySearch(search: string){
-  const query =  `
-      *[
-      _type == "post" && (title match "${search}" || body match "${search}")
+export async function getPostBySearch(search: string) {
+  const query = `
+    *[
+      _type == "post" && (
+        title match $search || body[].children[].text match $search
+      )
     ] | order(_createdAt desc) {
       author->{
         name,
@@ -118,12 +119,12 @@ export async function getPostBySearch(search: string){
         title
       }
     }
-  `
+  `;
 
-  try{
-    const data = await client.fetch(query, { search });
+  try {
+    const data = await client.fetch(query, { search: `*${search.toLowerCase()}*` }); // Wildcard search
     return data;
-  }catch(error){
+  } catch (error) {
     console.error("Error fetching posts by search:", error);
     return []; 
   }
