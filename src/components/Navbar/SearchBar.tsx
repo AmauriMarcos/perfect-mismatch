@@ -1,14 +1,17 @@
 import React, { useEffect, useState, useRef  } from 'react';
 import { IoIosSearch as IconSearch } from "react-icons/io";
 import { MdCleaningServices as IconClean} from "react-icons/md";
+import { useRouter } from 'next/navigation'
 
 interface SearchBarProps {
     openSearch: boolean; // Correct type is 'boolean'
-    windowWidth: number
+    setOpenSearch:  React.Dispatch<React.SetStateAction<boolean>>;
+    windowWidth: number;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ openSearch, windowWidth }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ openSearch, setOpenSearch, windowWidth }) => {
   const [stickyClass, setStickyClass] = useState('relative');
+  const router = useRouter()
   const [search, setSearch] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -36,10 +39,22 @@ const SearchBar: React.FC<SearchBarProps> = ({ openSearch, windowWidth }) => {
 
   useEffect(() => {
     if (openSearch && inputRef.current) {
-      inputRef.current.focus();  // Focus the input when the search is opened
+      inputRef.current.focus(); 
     }
   }, [openSearch]);
 
+  const goToSearchResultsPage = (search: string) => {
+    const formattedSearch = search.toLowerCase().replace(/\s+/g, '-');
+    router.push(`/search/${formattedSearch}`);
+    setOpenSearch(false);
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+        goToSearchResultsPage(search);
+    }
+};
+  
   return (
     <div
       className={`absolute h-[81px] py-[15px] px-[30px] ${windowWidth > 767 ? (stickyClass === 'sticky' ? 'top-[90px]' : 'top-[172px]') : (stickyClass === 'sticky' ? 'top-[68px]' : 'top-[108px]')}  left-0 z-50 bg-[#FCE2C8] w-full flex flex-col justify-between`}
@@ -50,13 +65,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ openSearch, windowWidth }) => {
                     ref={inputRef}
                     value={search} 
                     onChange={(e) => setSearch(e.target.value)} 
+                    onKeyDown={handleKeyDown}
                     placeholder='Search...' 
                     className='placeholder:text-[1.2rem] placeholder:text-[#313331] h-[50px]  placeholder:font-inter w-full bg-transparent border-none pl-[9.5px]  text-[1.2rem] focus-visible:outline-none' 
                     type='text'
                 />
                 {search.length > 0 && < IconClean onClick={resetSearch} className='fill-gray-600 hover:rotate-12 transition-all duration-[350ms] ease-in-out cursor-pointer h-[20px] w-[20px]'/>}
         </form>
-        <button className='mr-6'><IconSearch className='h-[25px] w-[25px]'/></button>
+        <button onClick={() => goToSearchResultsPage(search)} className='mr-6'><IconSearch className='h-[25px] w-[25px]'/></button>
       </div>
     </div>
   );

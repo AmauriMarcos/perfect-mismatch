@@ -98,3 +98,33 @@ export async function getPostsByCategory(category: string) {
     return []; 
   }
 }
+
+export async function getPostBySearch(search: string){
+  const query =  `
+      *[
+      _type == "post" && (title match "${search}" || body match "${search}")
+    ] | order(_createdAt desc) {
+      author->{
+        name,
+        bio,
+        image
+      },
+      title,
+      slug,
+      mainImage,
+      body,
+      _createdAt,
+      categories[]->{
+        title
+      }
+    }
+  `
+
+  try{
+    const data = await client.fetch(query, { search });
+    return data;
+  }catch(error){
+    console.error("Error fetching posts by search:", error);
+    return []; 
+  }
+}

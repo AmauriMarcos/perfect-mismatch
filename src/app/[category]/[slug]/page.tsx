@@ -35,7 +35,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         </h1>
 
         <Image
-          className="object-cover h-[300px]  m-auto rounded-md w-full"
+          className="object-cover h-[300px] m-auto rounded-md w-full"
           height={500}
           width={500}
           src={urlFor(data.mainImage).url()}

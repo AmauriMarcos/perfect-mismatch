@@ -76,7 +76,8 @@ const Navbar = () => {
 
   return (
     <div
-      className={`w-full flex flex-col ${stickyClass === "sticky" && "fixed"} z-50`}
+    className={`w-full flex flex-col ${stickyClass === "sticky" ? "sm:fixed" : ""} z-50`}
+
     >
       <div
         className={` ${stickyClass === "sticky" ? "hidden" : "flex"} w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[45px] bg-tertiaryAccent hover:bg-secondary group cursor-pointer`}
@@ -185,7 +186,7 @@ const Navbar = () => {
             <MobileMenu />
           </div>
           {openSearch && (
-            <SearchBar windowWidth={windowWidth} openSearch={openSearch} />
+            <SearchBar windowWidth={windowWidth} openSearch={openSearch} setOpenSearch={setOpenSearch} />
           )}
         </div>
       </div>
