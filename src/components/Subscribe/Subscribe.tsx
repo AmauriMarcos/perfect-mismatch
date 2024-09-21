@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { IoIosSearch as IconSearch } from "react-icons/io";
 import { usePathname } from "next/navigation";
 import BeatLoader from "react-spinners/BeatLoader";
