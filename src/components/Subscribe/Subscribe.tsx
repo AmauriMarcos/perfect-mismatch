@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { IoIosSearch as IconSearch } from "react-icons/io";
 import { usePathname } from "next/navigation";
 import BeatLoader from "react-spinners/BeatLoader";
-import ConfettiComponent from "../Confetti/Confetti"; // Ensure ConfettiComponent is correctly imported
 import LottieAnimationSending from "../LottieAnimation/sendingAnimation";
 
 const Subscribe = () => {
@@ -12,7 +11,7 @@ const Subscribe = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const pathname = usePathname();
-  const [showConfetti, setShowConfetti] = useState(false);
+
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -42,8 +41,7 @@ const Subscribe = () => {
 
       if (response.ok) {
         setSuccessMessage("Thank you!");
-        setShowConfetti(true); // Trigger confetti on success
-        setEmail(""); // Reset the input field after successful subscription
+        setEmail(""); 
       } else {
         const errorData = await response.json();
         setErrorMessage(
@@ -65,16 +63,8 @@ const Subscribe = () => {
     }
   };
 
-  useEffect(() => {
-    if (showConfetti) {
-      const timer = setTimeout(() => setShowConfetti(false), 8000); // Automatically hide confetti after 8 seconds
-      return () => clearTimeout(timer);
-    }
-  }, [showConfetti]);
 
-  const handleConfettiComplete = () => {
-    setShowConfetti(false); // Stop showing confetti after animation completes
-  };
+
 
   return (
     <div
