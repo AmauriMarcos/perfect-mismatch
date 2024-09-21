@@ -4,6 +4,7 @@ import Posts from "@/components/Posts/Posts";
 import { getPosts} from "./server/actions";
 import { BlogPost } from "@/lib/interface";
 
+
 export const revalidate = 0;
 
 export default async function Home() {
@@ -17,7 +18,7 @@ export default async function Home() {
         {latestPost && <Hero latestPost={latestPost} />}
         <Categories />
         <Posts posts={otherPosts} />
-        
+
     </div>
   );
 }
