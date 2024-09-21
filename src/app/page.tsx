@@ -3,7 +3,6 @@ import Hero from "@/components/Hero/Hero";
 import Posts from "@/components/Posts/Posts";
 import { getPosts} from "./server/actions";
 import { BlogPost } from "@/lib/interface";
-import Subscribe from "@/components/Subscribe/Subscribe";
 
 export const revalidate = 0;
 

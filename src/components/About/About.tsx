@@ -19,7 +19,7 @@ const About = () => {
       </div>
 
       {/* You can keep the Motion component for visual interaction */}
-      <Box />
+     
     </div>
   );
 };
