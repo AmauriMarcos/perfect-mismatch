@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import { ProvidersTheme } from "./provider";
+import Subscribe from "@/components/Subscribe/Subscribe";
 
 
 // Import Montserrat for titles
@@ -36,6 +37,7 @@ export default function RootLayout({
             <ProvidersTheme>
               <Navbar />
               {children}
+              <Subscribe/>
               <Footer />
             </ProvidersTheme>
           </main>
