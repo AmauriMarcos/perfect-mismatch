@@ -71,22 +71,22 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center gap-6 mt-6 md:mt-0">
             <div className="flex items-center bg-white rounded-full p-2 w-[224px] md:w-[251px]">
               <SearchIcon
-                className="w-5 h-5 text-gray-500 cursor-pointer"
+                className="min-w-5 min-h-5 text-gray-500 cursor-pointer"
                 onClick={executeSearch}
               />
               <div className="flex items-center">
                 <input
-                  type="search"
+                  type="text"
                   placeholder="Search..."
                   className="ml-2 outline-none bg-transparent text-gray-700 placeholder-gray-400 "
                   value={searchTerm}
                   onChange={handleSearch}
                   onKeyDown={handleKeyDown}
                 />
-              {/*   {searchTerm.length > 0 &&<IconClean
+                {searchTerm.length > 0 &&<IconClean
                   onClick={resetSearch}
                   className="fill-gray-600 hover:rotate-12 translate-x-[-.5rem] transition-all duration-[350ms] ease-in-out cursor-pointer h-[17px] w-[27px]"
-                />} */}
+                />}
               </div>
             </div>
             <button className="bg-[#FFA38A] hover:bg-teal-500 text-white font-semibold  py-2 px-6 md:px-4 rounded-full flex items-center">
