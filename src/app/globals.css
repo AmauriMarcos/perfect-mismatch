@@ -4,15 +4,18 @@
 
 @layer base {
   :root {
-    /* Define your custom color variables */
+    /* Light theme colors */
     --background: 0, 0%, 99%; /* white background */
     --foreground: 0 0% 3.9%; /* dark foreground */
+    --footer-background: 0, 0%, 23%;
+    --search-background: 210, 40%, 96%;
     --primary: 0 0% 9%; /* black */
     --primary-foreground: 0 0% 98%; /* white */
-    --secondary: 173 58% 39%; /* custom secondary color */
+    --secondary: 173 58% 39%; /* custom secondary color #059389 */
     --secondary-foreground: 0 0% 9%; /* black */
     --tertiary: 30, 90%, 89%; /* #FCE2C8 in HSL */
     --tertiary-accent: 13, 100%, 77%; /* #FFA38A in HSL */
+    --text-primary: 13, 100%, 77%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
     --accent: 0 0% 96.1%;
@@ -27,14 +30,32 @@
 
   .dark {
     /* Adjust the variables for dark mode */
-    --background: 0 0% 3.9%; /* dark background */
-    --foreground: 0 0% 98%; /* light foreground */
-    --primary: 0 0% 98%; /* light primary */
-    --primary-foreground: 0 0% 9%; /* dark */
-    --secondary: 0 0% 14.9%; /* dark secondary */
-    --secondary-foreground: 0 0% 98%; /* light */
-    --tertiary: 30 80% 80%; /* adjust for dark mode */
-    --tertiary-accent: 20 60% 70%; /* adjust for dark mode */
+    --background: 0, 0%, 13%; /* Dark background */
+    --foreground: 0 0% 90%; /* Light foreground */
+    --primary: 0 0% 98%; /* White for primary */
+    --primary-foreground: 0 0% 9%; /* Dark text for contrast */
+    --text-primary: 0 0% 90%;
+    --footer-background: 0, 0%, 23%;
+    --search-background: 0, 0%, 22%;
+    /* Updated secondary color for better contrast */
+    --secondary: 173 58% 60%; /* Lighter version of the original #059389 */
+    --secondary-foreground: 0 0% 10%; /* Darker secondary text for contrast */
+    
+    /* Updated tertiary color to fit better with dark mode */
+    --tertiary: 173 58% 60%; /* Slightly darker version of #FCE2C8 */
+    --tertiary-accent: 13, 100%, 77%; /* Darkened version of #FFA38A */
+    
+    --muted: 0 0% 15%; /* Dark muted background */
+    --muted-foreground: 0 0% 70%; /* Lighter muted text */
+    --accent: 0 0% 15%; /* Accent in dark mode */
+    --accent-foreground: 0 0% 90%; /* Light accent foreground */
+    
+    --destructive: 0 80% 55%; /* Slightly darker red */
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 25%; /* Darker border */
+    --input: 0 0% 25%; /* Darker input background */
+    --ring: 0 0% 90%; /* Light ring color for focus */
   }
 
   /* Global styles */

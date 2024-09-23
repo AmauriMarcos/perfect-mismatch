@@ -59,7 +59,7 @@ const Navbar = () => {
   return (
     <div className={`w-full flex flex-col z-50`}>
       <div
-        className={`flex w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[44px] bg-tertiary hover:bg-secondary group cursor-pointer`}
+        className={`flex w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[44px] bg-tertiary hover:bg-secondaryAccent group cursor-pointer`}
       >
         <IconSearch className="h-4 w-4 md:h-6 md:w-6 fill-[#313131] cursor-pointer group-hover:fill-[#313131]" />
         <h4 className="font-montserrat text-[.525rem] md:text-[.65rem] uppercase font-extrabold text-[#313131] cursor-pointer group-hover:text-[#313131]">
@@ -67,7 +67,7 @@ const Navbar = () => {
         </h4>
       </div>
 
-      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-full bg-background flex flex-col justify-between items-center shadow-custom">
+      <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-full bg-background dark:border-b dark:border-solid dark:border-[#444444]   border- flex flex-col justify-between items-center dark:shadow-none shadow-custom">
         <div className={`hidden md:flex justify-between h-[56px] w-full py-[1.2rem]`}>
           <ul className="hidden md:flex gap-4 transition-all duration-[350ms] ease-in-out ">
             {topLinks.map((item) => (
@@ -90,13 +90,13 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="flex gap-2 items-center">
-            <div className="h-[40px] w-[40px] rounded-full border-2 border-solid border-[#000] flex items-center justify-center group cursor-pointer">
+            <div className="h-[40px] w-[40px] rounded-full border border-solid border-[#444444] flex items-center justify-center group cursor-pointer">
               <IconFacebook className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out" />
             </div>
-            <div className="h-[40px] w-[40px] rounded-full border-2 border-solid border-[#000] flex items-center justify-center group cursor-pointer">
+            <div className="h-[40px] w-[40px] rounded-full border border-solid border-[#444444] flex items-center justify-center group cursor-pointer">
               <IconInstagram className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out" />
             </div>
-            <div className="h-[40px] w-[40px] rounded-full border-2 border-solid border-[#000] flex items-center justify-center group cursor-pointer">
+            <div className="h-[40px] w-[40px] rounded-full border border-solid border-[#444444] flex items-center justify-center group cursor-pointer">
               <IconEmail className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out" />
             </div>
           </div>

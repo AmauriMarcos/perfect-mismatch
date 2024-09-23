@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoIosSearch as IconSearch } from "react-icons/io";
 import { usePathname } from "next/navigation";
 import BeatLoader from "react-spinners/BeatLoader";
@@ -10,8 +10,15 @@ const Subscribe = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false); 
   const pathname = usePathname();
 
+  // Reset error message when email changes
+  useEffect(() => {
+    if (email.length === 0) {
+      setErrorMessage("");
+    }
+  }, [email, isSubmitted]);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -23,6 +30,7 @@ const Subscribe = () => {
     setIsLoading(true);
     setSuccessMessage("");
     setErrorMessage("");
+    setIsSubmitted(true); 
 
     try {
       const response = await fetch(
@@ -34,14 +42,14 @@ const Subscribe = () => {
           },
           body: new URLSearchParams({
             email,
-            embed: "1", // required by Buttondown
+            embed: "1",
           }),
         }
       );
 
       if (response.ok) {
         setSuccessMessage("Thank you!");
-        setEmail(""); 
+        setEmail("");
       } else {
         const errorData = await response.json();
         setErrorMessage(
@@ -63,27 +71,29 @@ const Subscribe = () => {
     }
   };
 
-
-
-
   return (
     <div
-      className={`${pathname !== "/" ? "hidden" : "flex"} px-[6%] md:px-[12%] 2xl:px-[14%] flex-col items-center justify-center bg-tertiary py-[2.5rem] md:py-[4rem] md:mt-10 md:flex-row md:justify-between`}
+      className={`${
+        pathname !== "/" ? "hidden" : "flex"
+      } px-[6%] md:px-[12%] 2xl:px-[14%] flex-col items-center justify-center bg-tertiary py-[2.5rem] md:py-[4rem] md:mt-10 md:flex-row md:justify-between`}
     >
       {isLoading ? (
-        <div className="max-h-[64px] translate-y-[-2rem]"> <LottieAnimationSending /></div>
-       
+        <div className="max-h-[64px] translate-y-[-2rem]">
+          <LottieAnimationSending />
+        </div>
       ) : (
         <>
           {successMessage ? (
-            <div className="mt-4 text-lg md:text-[31px] text-tertiaryAccent uppercase font-montserrat font-thin text-center">
+            <div className="mt-4 text-lg md:text-[31px] text-textPrimary uppercase font-montserrat font-thin text-center">
               {successMessage}
             </div>
-          ) : errorMessage ? (
-            <p className="text-red-500 mt-4 text-center">{errorMessage}</p>
+          ) : isSubmitted && errorMessage ? (
+            <p className="text-red-500 dark:text-[#215c55] dark:font-bold font-inter mt-4 text-center">
+              {errorMessage}
+            </p>
           ) : (
             <div className="flex flex-col gap-0 md:gap-4 text-center md:text-left">
-              <span className="text-lg md:text-[31px] text-tertiaryAccent uppercase font-montserrat font-thin">
+              <span className="text-lg md:text-[31px] text-textPrimary uppercase font-montserrat font-thin">
                 Never miss a post!
               </span>
               <span className="text-lg md:text-[31px] text-back text-[#313131] font-montserrat font-thin">
@@ -99,7 +109,7 @@ const Subscribe = () => {
           <input
             type="email"
             placeholder="Email"
-            className="placeholder:text-slate-300 h-[40px] md:h-[60px] w-[240px] md:w-[430px] px-4 border border-none rounded-l-md focus:outline-none font-inter text-[#313131]"
+            className="placeholder:text-slate-300 bg-[#fcfcfc] h-[40px] md:h-[60px] w-[240px] md:w-[430px] px-4 border border-none rounded-l-md focus:outline-none font-inter text-[#313131]"
             value={email}
             onChange={handleEmailChange}
             onKeyDown={handleKeyDown}
@@ -117,8 +127,6 @@ const Subscribe = () => {
             )}
           </button>
         </div>
-
-        {/* Success and error messages below the input */}
       </div>
     </div>
   );

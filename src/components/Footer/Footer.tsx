@@ -39,7 +39,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="w-full bg-[#313331] pb-10">
+    <div className="w-full bg-footerBackground pb-10">
       <div className=" md:mt-[50px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] pt-6 md:pt-0">
         <div className="flex flex-col md:flex-row justify-between mb-4">
           <div className="flex gap-4 md:gap-8 justify-center  md:items-left ">

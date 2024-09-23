@@ -11,6 +11,9 @@ const config: Config = {
     extend: {
       colors: {
         background: 'hsl(var(--background))',
+        footerBackground: 'hsl(var(--footer-background))',
+        searchBackground: 'hsl(var(--search-background))',
+        textPrimary: 'hsl(var(--text-primary))',
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',

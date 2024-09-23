@@ -30,7 +30,7 @@ const Hero: React.FC<HeroProps> = ({ latestPost }) => {
         />
         <div className="flex flex-col gap-2 items-start">
           <div className="font-inter  w-full flex items-start ">
-            <p className="text-slate-950 font-normal text-[.75rem]">
+            <p className=" font-normal text-[.75rem]">
               {formatDateString(latestPost._createdAt)}
             </p>
           </div>
@@ -48,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({ latestPost }) => {
           </div>
 
           <div className="w-full flex justify-start">
-          <Button asChild variant="outline">
+          <Button asChild variant="default">
             <Link href={`/${combinedSlug}`}>Read more</Link>
           </Button>
         </div>

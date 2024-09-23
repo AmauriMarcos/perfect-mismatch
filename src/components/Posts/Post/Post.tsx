@@ -33,7 +33,7 @@ const Post = ({
       </div>
       <div className="flex flex-col gap-2 p-4">
         <div className="font-inter  w-full flex items-start ">
-          <p className="text-slate-950 font-normal text-[.75rem]">
+          <p className=" font-normal text-[.75rem]">
             {formatDateString(_createdAt)}
           </p>
         </div>
