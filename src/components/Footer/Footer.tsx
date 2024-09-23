@@ -78,14 +78,14 @@ const Footer = () => {
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="ml-2 outline-none bg-transparent text-gray-700 placeholder-gray-400 "
+                  className="ml-2 max-w-[70%] outline-none bg-transparent text-gray-700 placeholder-gray-400 "
                   value={searchTerm}
                   onChange={handleSearch}
                   onKeyDown={handleKeyDown}
                 />
                 {searchTerm.length > 0 &&<IconClean
                   onClick={resetSearch}
-                  className="fill-gray-600 hover:rotate-12 translate-x-[-.5rem] transition-all duration-[350ms] ease-in-out cursor-pointer h-[17px] w-[27px]"
+                  className="fill-gray-600 hover:rotate-12  transition-all duration-[350ms] ease-in-out cursor-pointer h-[17px] w-[27px]"
                 />}
               </div>
             </div>
