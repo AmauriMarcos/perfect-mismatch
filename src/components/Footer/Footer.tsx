@@ -23,20 +23,20 @@ const Footer = () => {
   const executeSearch = () => {
     if (searchTerm.trim() !== "") {
       router.push(`/search/${searchTerm}`);
-      setSearchTerm('');
+      setSearchTerm("");
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       executeSearch();
-      setSearchTerm('');
+      setSearchTerm("");
     }
   };
 
   const resetSearch = () => {
-    setSearchTerm('');
-  }
+    setSearchTerm("");
+  };
 
   return (
     <div className="w-full bg-[#313331] pb-10">
@@ -44,55 +44,75 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between mb-4">
           <div className="flex gap-4 md:gap-8 justify-center  md:items-left ">
             <div className="flex flex-col gap-4">
-              <Link href='/blog/recipes'  className="text-white hover:text-teal-500 font-semibold">
+              <Link
+                href="/blog/recipes"
+                className="text-white hover:text-teal-500 font-semibold"
+              >
                 Recipes
               </Link>
-              <Link href='/blog/travels' className="text-white hover:text-teal-500 font-semibold">
+              <Link
+                href="/blog/travels"
+                className="text-white hover:text-teal-500 font-semibold"
+              >
                 Travels
               </Link>
             </div>
             <div className="flex flex-col gap-4">
-              <Link href='/blog/crafts' className="text-white hover:text-teal-500 font-semibold">
+              <Link
+                href="/blog/crafts"
+                className="text-white hover:text-teal-500 font-semibold"
+              >
                 Crafts
               </Link>
-              <Link href='/blog/insights' className="text-white hover:text-teal-500 font-semibold">
+              <Link
+                href="/blog/insights"
+                className="text-white hover:text-teal-500 font-semibold"
+              >
                 Insights
               </Link>
             </div>
             <div className="flex flex-col gap-4">
-              <Link href='/blog/about' className="text-white hover:text-teal-500 font-semibold">
+              <Link
+                href="/blog/about"
+                className="text-white hover:text-teal-500 font-semibold"
+              >
                 About
               </Link>
-              <Link href='/blog/contact' className="text-white hover:text-teal-500 font-semibold">
+              <Link
+                href="/blog/contact"
+                className="text-white hover:text-teal-500 font-semibold"
+              >
                 Contact
               </Link>
             </div>
           </div>
           <div className="flex flex-col md:flex-row items-center gap-6 mt-6 md:mt-0">
-            <div className="flex justify-between items-center bg-white rounded-full p-2 w-[224px] md:w-[251px]">
-              <div className="flex items-center">
+            <div className="flex justify-between items-center bg-white rounded-full p-2 w-full max-w-[224px] md:max-w-[251px]">
+              <div className="flex items-center w-full">
                 <SearchIcon
                   className="min-w-5 min-h-5 text-gray-500 cursor-pointer"
                   onClick={executeSearch}
                 />
-          
+
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="ml-2 self-start outline-none bg-transparent text-gray-700 placeholder-gray-400 "
+                  className="ml-2 outline-none bg-transparent text-gray-700 placeholder-gray-400 w-full"
                   value={searchTerm}
                   onChange={handleSearch}
                   onKeyDown={handleKeyDown}
                 />
               </div>
-             
-                {searchTerm.length > 0 &&<IconClean
+
+              {searchTerm.length > 0 && (
+                <IconClean
                   onClick={resetSearch}
-                  className="fill-gray-600 hover:rotate-12  transition-all duration-[350ms] ease-in-out cursor-pointer mr-2  min-h-[17px] min-w-[17px]"
-                />}
-             
+                  className="fill-gray-600 hover:rotate-12 transition-all duration-350 ease-in-out cursor-pointer ml-2 shrink-0 min-h-[17px] min-w-[17px]"
+                />
+              )}
             </div>
-            <button className="bg-[#FFA38A] hover:bg-teal-500 text-white font-semibold  py-2 px-6 md:px-4 rounded-full flex items-center">
+
+            <button className="min-w-[224px] md:min-w-[251px] justify-center bg-[#FFA38A] hover:bg-teal-500 text-white font-semibold  py-2 px-6 md:px-4 rounded-full flex items-center ">
               <InstagramIcon className="w-5 h-5 text-white mr-2" />
               Follow on Instagram
             </button>
