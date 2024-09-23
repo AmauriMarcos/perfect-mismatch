@@ -21,6 +21,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   ? [data.author.bio] // If it's a single object, wrap it in an array
   : null;
   const authorImage = (data.author as AuthorInterface).image || null;
+  const imageUrl = authorImage
+  ? urlFor(authorImage).url()
+  : "https://via.placeholder.com/100";
 
 
   console.log(authorBio)
@@ -28,8 +31,8 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     <div className="mt-[35px] md:mt-[5rem] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col pb-[15%] md:pb-[7%]">
       <div className="flex flex-col gap-2 m-auto items-center">
         <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarImage src={imageUrl} />
+          <AvatarFallback>{authorName.substring(0,2).toUpperCase()}</AvatarFallback>
         </Avatar>
 
         <div className=" gap-2 flex items-end w-full justify-end">

@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { urlFor } from "@/sanity/lib/image";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { ImageAsset, BodyContent } from "@/lib/interface";
