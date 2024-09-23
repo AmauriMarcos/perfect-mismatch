@@ -66,24 +66,24 @@ const stickNavbar = () => {
         onClick={toggleMenu}
       >
         <div
-          className={`w-6 h-[0.20rem] bg-tertiaryAccent rounded-sm ${
+          className={`w-6 h-[0.25rem] bg-tertiaryAccent rounded-sm ${
             menuOpen ? "rotate-45" : ""
           } origin-left ease-in-out duration-500`}
         />
         <div
-          className={`w-6 h-[0.20rem] bg-tertiaryAccent rounded-sm ${
+          className={`w-6 h-[0.25rem] bg-tertiaryAccent rounded-sm ${
             menuOpen ? "opacity-0" : ""
           }`}
         />
         <div
-          className={`w-6 h-[0.20rem] bg-tertiaryAccent rounded-sm ${
+          className={`w-6 h-[0.25rem] bg-tertiaryAccent rounded-sm ${
             menuOpen ? "-rotate-45" : ""
           } origin-left ease-in-out duration-500`}
         />
       </div>
         {/* ${stickyClass === 'sticky' && 'fixed'}`} */}
       {menuOpen && (
-        <div className={`  absolute ${stickyClass === 'sticky' ? 'top-[68px]' : 'top-[94px]'}  z-50 left-0 bg-secondary w-full h-[100vh] flex flex-col justify-between shadow-[0 0 10px rgba(0,0,0,0.5)]`}>
+        <div className={`  absolute ${stickyClass === 'sticky' ? 'top-[68px]' : 'top-[94px]'}  z-[9999] left-0 bg-[#dda290] dark:bg-[#212121] w-full h-[100vh] flex flex-col justify-between shadow-[0 0 10px rgba(0,0,0,0.5)]`}>
           {/* Menu items */}
           <div className="flex h-[86%] flex-col gap-2 items-center justify-center ">
             {items.map((item) => (

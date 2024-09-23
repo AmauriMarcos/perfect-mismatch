@@ -111,12 +111,12 @@ const Navbar = () => {
               <IconInstagram className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out" />
             </Link>
 
-            <Link
-              href="mailto:perfectmismatch.family@gmail.com"
+            <div
+              onClick={() => window.location.href = 'mailto:perfectmismatch.family@gmail.com'}
               className="h-[40px] w-[40px] rounded-full border border-solid border-[#444444] flex items-center justify-center group cursor-pointer"
             >
               <IconEmail className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out" />
-            </Link>
+            </div>
           </div>
         </div>
 
