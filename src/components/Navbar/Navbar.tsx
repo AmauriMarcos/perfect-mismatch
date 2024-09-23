@@ -82,7 +82,7 @@ const Navbar = () => {
                         ? "text-foreground font-bold"
                         : "hover:text-foreground"
                       : pathname.includes(item.path)
-                        ? "text-foreground font-bold" 
+                        ? "text-foreground font-bold"
                         : "hover:text-foreground"
                   }`}
                 >
@@ -93,15 +93,30 @@ const Navbar = () => {
           </ul>
 
           <div className="flex gap-2 items-center">
-            <div className="h-[40px] w-[40px] rounded-full border border-solid border-[#444444] flex items-center justify-center group cursor-pointer">
+            <Link
+              href="https://www.facebook.com/marija.lilly"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-[40px] w-[40px] rounded-full border border-solid border-[#444444] flex items-center justify-center group cursor-pointer"
+            >
               <IconFacebook className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out" />
-            </div>
-            <div className="h-[40px] w-[40px] rounded-full border border-solid border-[#444444] flex items-center justify-center group cursor-pointer">
+            </Link>
+
+            <Link
+              href="https://www.instagram.com/lily.marija/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-[40px] w-[40px] rounded-full border border-solid border-[#444444] flex items-center justify-center group cursor-pointer"
+            >
               <IconInstagram className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out" />
-            </div>
-            <div className="h-[40px] w-[40px] rounded-full border border-solid border-[#444444] flex items-center justify-center group cursor-pointer">
+            </Link>
+
+            <Link
+              href="mailto:perfectmismatch.family@gmail.com"
+              className="h-[40px] w-[40px] rounded-full border border-solid border-[#444444] flex items-center justify-center group cursor-pointer"
+            >
               <IconEmail className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out" />
-            </div>
+            </Link>
           </div>
         </div>
 

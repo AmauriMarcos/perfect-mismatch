@@ -113,8 +113,15 @@ const Footer = () => {
             </div>
 
             <button className="min-w-[224px] md:min-w-[251px] justify-center bg-[#FFA38A] hover:bg-teal-500 text-white font-semibold  py-2 px-6 md:px-4 rounded-full flex items-center ">
-              <InstagramIcon className="w-5 h-5 text-white mr-2" />
-              Follow on Instagram
+              <Link
+                href="https://www.instagram.com/lily.marija/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex "
+              >
+                <InstagramIcon className="w-5 h-5 text-white mr-2" />
+                Follow on Instagram
+              </Link>
             </button>
           </div>
         </div>

@@ -4,7 +4,7 @@ Image;
 
 const About = () => {
   return (
-    <div className="w-full m-auto my-[5rem] mb-[10rem]">
+    <div className="w-full m-auto my-[3rem] md:my-[5rem] mb-[10rem]">
       <div className="w-[85%] md:w-[60%] m-auto flex flex-col-reverse md:flex-row ">
         <div className="mr-0 md:mr-10 ">
           <h2 className="text-[1.5rem] md:text-3xl font-normal font-montserrat text-center md:text-left my-6">
