@@ -69,25 +69,28 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col md:flex-row items-center gap-6 mt-6 md:mt-0">
-            <div className="flex items-center bg-white rounded-full p-2 w-[224px] md:w-[251px]">
-              <SearchIcon
-                className="min-w-5 min-h-5 text-gray-500 cursor-pointer"
-                onClick={executeSearch}
-              />
+            <div className="flex justify-between items-center bg-white rounded-full p-2 w-[224px] md:w-[251px]">
               <div className="flex items-center">
+                <SearchIcon
+                  className="min-w-5 min-h-5 text-gray-500 cursor-pointer"
+                  onClick={executeSearch}
+                />
+          
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="ml-2 max-w-[70%] outline-none bg-transparent text-gray-700 placeholder-gray-400 "
+                  className="ml-2 self-start outline-none bg-transparent text-gray-700 placeholder-gray-400 "
                   value={searchTerm}
                   onChange={handleSearch}
                   onKeyDown={handleKeyDown}
                 />
+              </div>
+             
                 {searchTerm.length > 0 &&<IconClean
                   onClick={resetSearch}
-                  className="fill-gray-600 hover:rotate-12  transition-all duration-[350ms] ease-in-out cursor-pointer h-[17px] w-[27px]"
+                  className="fill-gray-600 hover:rotate-12  transition-all duration-[350ms] ease-in-out cursor-pointer mr-2  min-h-[17px] min-w-[17px]"
                 />}
-              </div>
+             
             </div>
             <button className="bg-[#FFA38A] hover:bg-teal-500 text-white font-semibold  py-2 px-6 md:px-4 rounded-full flex items-center">
               <InstagramIcon className="w-5 h-5 text-white mr-2" />
