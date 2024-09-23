@@ -6,16 +6,26 @@ import { PortableText } from "next-sanity";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { urlFor } from "@/sanity/lib/image";
 import { formatDateString } from "@/util/formateDateString";
-import { Author } from "@/lib/interface";
+import { Author as AuthorInterface } from "@/lib/interface";
+import Author  from "@/components/Author/Author";
+
 
 export const revalidate = 0;
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const data = await getPostBySlug(params.slug);
-  const authorName = (data.author as Author).name;
-  
+  const authorName = (data.author as AuthorInterface).name;
+  const authorBio = Array.isArray(data.author?.bio)
+  ? data.author.bio
+  : data.author?.bio
+  ? [data.author.bio] // If it's a single object, wrap it in an array
+  : null;
+  const authorImage = (data.author as AuthorInterface).image || null;
+
+
+  console.log(authorBio)
   return (
-    <div className="mt-[35px] md:mt-[5rem] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col">
+    <div className="mt-[35px] md:mt-[5rem] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col pb-[15%] md:pb-[7%]">
       <div className="flex flex-col gap-2 m-auto items-center">
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />
@@ -29,7 +39,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </p>
         </div>
       </div>
-      <div className="w-full prose-h2:text-2xl prose-h2:md:text-[30px] prose-li:marker:text-tertiaryAccent  prose prose-lg m-auto dark:prose-invert prose-h2:underline prose-headings:font-montserrat prose-p:font-inter">
+      <div className="w-full prose-h2:text-2xl prose-h2:md:text-[30px] prose-li:marker:text-tertiaryAccent  prose prose-lg m-auto dark:prose-invert  prose-headings:font-montserrat prose-p:font-inter">
         <h1 className=" font-montserrat font-extrabold mt-[1.5rem] sm:mt-[0] text-3xl sm:text-[3rem] text-center tracking-tight leading-tight">
           {data.title}
         </h1>
@@ -51,7 +61,12 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </p>
         </div>
         <PortableText value={data.body} />
+        
       </div>
+      <div className="max-w-[73ch] m-auto w-full">
+        <Author authorName={authorName} authorImage={authorImage} authorBio={authorBio}/>
+      </div>
+      
     </div>
   );
 }

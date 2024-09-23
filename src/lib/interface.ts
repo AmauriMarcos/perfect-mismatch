@@ -1,7 +1,7 @@
 export interface Author {
     name: string;
-    bio: Array<object>; // Adjust this if you have a specific shape for `bio`
-    image: string | null;
+    bio: BodyContent | null; 
+    image: ImageAsset | null;
 }
   
 interface Slug {
@@ -14,7 +14,7 @@ export interface Category {
     _type: string;
 }
 
-interface ImageAsset {
+export interface ImageAsset {
     _type: string;
     asset: {
         _ref: string;
@@ -22,7 +22,7 @@ interface ImageAsset {
     };
 }
   
-interface BodyContent {
+export interface BodyContent {
     _type: string;
     children: Array<object>; // Adjust this based on the actual shape of the `body` array elements
 }

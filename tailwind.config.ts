@@ -14,6 +14,7 @@ const config: Config = {
         footerBackground: 'hsl(var(--footer-background))',
         searchBackground: 'hsl(var(--search-background))',
         textPrimary: 'hsl(var(--text-primary))',
+        authorBackground: 'hsl(var(--author-background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',

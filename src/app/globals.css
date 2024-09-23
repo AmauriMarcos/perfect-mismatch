@@ -9,6 +9,8 @@
     --foreground: 0 0% 3.9%; /* dark foreground */
     --footer-background: 0, 0%, 23%;
     --search-background: 210, 40%, 96%;
+    --author-background:0, 0%, 98%;
+
     --primary: 0 0% 9%; /* black */
     --primary-foreground: 0 0% 98%; /* white */
     --secondary: 173 58% 39%; /* custom secondary color #059389 */
@@ -37,6 +39,8 @@
     --text-primary: 0 0% 90%;
     --footer-background: 0, 0%, 23%;
     --search-background: 0, 0%, 22%;
+    --author-background:0, 0%, 98%;
+    
     /* Updated secondary color for better contrast */
     --secondary: 173 58% 60%; /* Lighter version of the original #059389 */
     --secondary-foreground: 0 0% 10%; /* Darker secondary text for contrast */
