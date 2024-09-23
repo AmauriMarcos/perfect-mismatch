@@ -24,6 +24,6 @@ export default function ThemeSwitch() {
   }
 
   return (
-    <MoonIcon className="h-6 w-6 text-gray-900 cursor-pointer" onClick={() => setTheme("dark")} />
+    <MoonIcon className="h-6 w-6 text-primary cursor-pointer" onClick={() => setTheme("dark")} />
   );
 }

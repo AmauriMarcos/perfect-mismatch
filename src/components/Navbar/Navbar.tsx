@@ -102,9 +102,9 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className={`flex justify-between w-full ${windowWidth > 767 ? "h-[70px]" : "h-[70px]"} gap-8 z-50`}>
+        <div className={`flex justify-between w-full h-[50px] md:h-[70px] gap-8 z-50`}>
           <div className="h-full flex items-center justify-center">
-            <h3 className="font-extrabold text-[2rem] font-montserrat text-secondary">
+            <h3 className="font-extrabold text-[1.5rem] md:text-[2rem] font-montserrat text-secondary">
               PMLogo
             </h3>
           </div>
@@ -141,16 +141,16 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <div className="flex gap-6 items-center">
+          <div className="flex gap-4 md:gap-6 items-center">
             <ThemeSwitch />
             <div
               onClick={toggleSearch}
-              className="h-[50px] w-[50px] hover:bg-tertiaryAccent bg-tertiary rounded-full border-solid border-[#000] flex items-center justify-center group cursor-pointer"
+              className="h-[36px] w-[36px] md:h-[50px] md:w-[50px] hover:bg-tertiaryAccent bg-tertiary rounded-full border-solid border-[#000] flex items-center justify-center group cursor-pointer"
             >
               {openSearch ? (
-                <IconClose className="h-[20px] w-[20px] " />
+                <IconClose className="h-[16px] md:h-[20px] w-[16px] md:w-[20px] " />
               ) : (
-                <IconSearch className="h-[20px] w-[20px] " />
+                <IconSearch className="h-[16px] md:h-[20px] w-[16px] md:w-[20px] " />
               )}
             </div>
             <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
