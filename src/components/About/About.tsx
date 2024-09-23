@@ -8,7 +8,7 @@ const About = () => {
       <div className="w-[85%] md:w-[60%] m-auto flex flex-col-reverse md:flex-row ">
         <div className="mr-0 md:mr-10 ">
           <h2 className="text-[1.5rem] md:text-3xl font-normal font-montserrat text-center md:text-left my-6">
-            Hi! It's great to see you here!
+            {`Hi! It's great to see you here!`}
           </h2>
           <p className="font-inter text-md md:text-lg text-primary font-normal  my-[2rem]">
             {`Hi, I'm Marija! I'm living in Serbia with my wonderful
