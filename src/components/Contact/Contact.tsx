@@ -96,7 +96,7 @@ const Contact = () => {
               onConfettiComplete={handleConfettiComplete}
             />
           )}
-          <div className="text-green-600 text-center mb-4">
+          <div className="text-green-600 dark:text-[#5ed4c6] text-center mb-4">
             YAY ! Thank you for your message!
           </div>
         </>
@@ -161,7 +161,7 @@ const Contact = () => {
             )}
           />
 
-          {isLoading ? <BeatLoader /> : <Button type="submit">Submit</Button>}
+          {isLoading ? <BeatLoader color="#444444" /> : <Button type="submit">Submit</Button>}
         </form>
       </Form>
     </div>

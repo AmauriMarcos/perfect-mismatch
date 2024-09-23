@@ -46,7 +46,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           <span className="font-inter font-light text-[.8rem] my-2 text-end italic">
             Published on
           </span>
-          <p className="text-slate-950 font-normal text-[.75rem] my-2 text-end">
+          <p className=" font-normal text-[.75rem] my-2 text-end">
             {formatDateString(data._createdAt)}
           </p>
         </div>

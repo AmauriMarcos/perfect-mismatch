@@ -68,20 +68,22 @@ const Navbar = () => {
       </div>
 
       <div className="w-full px-[6%] md:px-[12%] 2xl:px-[14%] h-full bg-background dark:border-b dark:border-solid dark:border-[#444444]   border- flex flex-col justify-between items-center dark:shadow-none shadow-custom">
-        <div className={`hidden md:flex justify-between h-[56px] w-full py-[1.2rem]`}>
-          <ul className="hidden md:flex gap-4 transition-all duration-[350ms] ease-in-out ">
+        <div
+          className={`hidden md:flex justify-between h-[56px] w-full py-[1.2rem]`}
+        >
+          <ul className="hidden md:flex gap-4 transition-all duration-[350ms] ease-in-out">
             {topLinks.map((item) => (
-              <li key={item.id} className="">
+              <li key={item.id}>
                 <Link
-                  href={item.path === '/' ? '/' : `/blog/${item.path}`}
+                  href={item.path === "/" ? "/" : `/blog/${item.path}`}
                   className={`block transition-all duration-[350ms] ease-in-out text-[.875rem] ${
                     item.path === "/"
                       ? pathname === "/"
-                        ? "text-foreground"
+                        ? "text-foreground font-bold"
                         : "hover:text-foreground"
                       : pathname.includes(item.path)
-                      ? "text-foreground"
-                      : "hover:text-foreground"
+                        ? "text-foreground font-bold" 
+                        : "hover:text-foreground"
                   }`}
                 >
                   {item.name}
@@ -89,6 +91,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+
           <div className="flex gap-2 items-center">
             <div className="h-[40px] w-[40px] rounded-full border border-solid border-[#444444] flex items-center justify-center group cursor-pointer">
               <IconFacebook className="h-[20px] w-[20px] group-hover:rotate-12 transition-all duration-[350ms] ease-in-out" />
@@ -102,7 +105,9 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className={`flex justify-between w-full h-[50px] md:h-[70px] gap-8 z-50`}>
+        <div
+          className={`flex justify-between w-full h-[50px] md:h-[70px] gap-8 z-50`}
+        >
           <div className="h-full flex items-center justify-center">
             <h3 className="font-extrabold text-[1.5rem] md:text-[2rem] font-montserrat text-secondary">
               PMLogo
@@ -112,15 +117,15 @@ const Navbar = () => {
             {items.map((item) => (
               <li key={item.id} className="relative group">
                 <Link
-                  href={item.path === '/' ? '/' : `/blog/${item.path}`}
+                  href={item.path === "/" ? "/" : `/blog/${item.path}`}
                   className={`relative block transition-all duration-500 ease-in-out font-black text-[1.2rem] ${
                     item.path === "/"
                       ? pathname === "/"
                         ? "text-foreground"
                         : "hover:text-foreground"
                       : pathname.includes(item.path)
-                      ? "text-foreground"
-                      : "hover:text-foreground"
+                        ? "text-foreground"
+                        : "hover:text-foreground"
                   }`}
                 >
                   {item.name}
@@ -132,8 +137,8 @@ const Navbar = () => {
                           ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]"
                           : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]"
                         : pathname.includes(item.path)
-                        ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]"
-                        : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]"
+                          ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]"
+                          : "group-hover:opacity-100 group-hover:scale-y-100 group-hover:top-0 group-hover:bottom-[-.2rem]"
                     }`}
                   />
                 </Link>
@@ -148,15 +153,20 @@ const Navbar = () => {
               className="h-[36px] w-[36px] md:h-[50px] md:w-[50px] hover:bg-tertiaryAccent bg-tertiary rounded-full border-solid border-[#000] flex items-center justify-center group cursor-pointer"
             >
               {openSearch ? (
-                <IconClose className="h-[16px] md:h-[20px] w-[16px] md:w-[20px] " />
+                <IconClose className="h-[16px] md:h-[20px] w-[16px] md:w-[20px] dark:fill-[#030303]" />
               ) : (
-                <IconSearch className="h-[16px] md:h-[20px] w-[16px] md:w-[20px] " />
+                <IconSearch className="h-[16px] md:h-[20px] w-[16px] md:w-[20px] dark:fill-[#030303]" />
               )}
             </div>
             <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </div>
           {openSearch && (
-            <SearchBar windowWidth={windowWidth} openSearch={openSearch} setOpenSearch={setOpenSearch} setMenuOpen={setMenuOpen} />
+            <SearchBar
+              windowWidth={windowWidth}
+              openSearch={openSearch}
+              setOpenSearch={setOpenSearch}
+              setMenuOpen={setMenuOpen}
+            />
           )}
         </div>
       </div>

@@ -68,3 +68,11 @@
     @apply border-border;
   }
 }
+
+h1, h2, h3, .title, li, a {
+  font-family: var(--font-montserrat);
+}
+
+p,  .body-text {
+  font-family: var(--font-inter);
+}
