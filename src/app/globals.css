@@ -10,7 +10,7 @@
     --footer-background: 0, 0%, 23%;
     --search-background: 210, 40%, 96%;
     --author-background:0, 0%, 98%;
-
+    
     --primary: 0 0% 9%; /* black */
     --primary-foreground: 0 0% 98%; /* white */
     --secondary: 173 58% 39%; /* custom secondary color #059389 */
@@ -32,7 +32,7 @@
 
   .dark {
     /* Adjust the variables for dark mode */
-    --background: 0, 0%, 13%; /* Dark background */
+    --background: 200, 17%, 14%; /* Dark background */
     --foreground: 0 0% 90%; /* Light foreground */
     --primary: 0 0% 98%; /* White for primary */
     --primary-foreground: 0 0% 9%; /* Dark text for contrast */
@@ -46,12 +46,12 @@
     --secondary-foreground: 0 0% 10%; /* Darker secondary text for contrast */
     
     /* Updated tertiary color to fit better with dark mode */
-    --tertiary: 173 58% 60%; /* Slightly darker version of #FCE2C8 */
+    --tertiary: 197, 61%, 26%; /* Slightly darker version of #FCE2C8 */
     --tertiary-accent: 13, 100%, 77%; /* Darkened version of #FFA38A */
     
     --muted: 0 0% 15%; /* Dark muted background */
     --muted-foreground: 0 0% 70%; /* Lighter muted text */
-    --accent: 0 0% 15%; /* Accent in dark mode */
+    --accent: 198, 17%, 12%; /* Accent in dark mode */
     --accent-foreground: 0 0% 90%; /* Light accent foreground */
     
     --destructive: 0 80% 55%; /* Slightly darker red */

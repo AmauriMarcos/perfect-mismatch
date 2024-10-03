@@ -66,17 +66,17 @@ const stickNavbar = () => {
         onClick={toggleMenu}
       >
         <div
-          className={`w-6 h-[0.25rem] bg-tertiaryAccent rounded-sm ${
+          className={`w-6 h-[0.25rem] bg-tertiaryAccent dark:bg-[#D39646] rounded-sm ${
             menuOpen ? "rotate-45" : ""
           } origin-left ease-in-out duration-500`}
         />
         <div
-          className={`w-6 h-[0.25rem] bg-tertiaryAccent rounded-sm ${
+          className={`w-6 h-[0.25rem] bg-tertiaryAccent dark:bg-[#D39646] rounded-sm ${
             menuOpen ? "opacity-0" : ""
           }`}
         />
         <div
-          className={`w-6 h-[0.25rem] bg-tertiaryAccent rounded-sm ${
+          className={`w-6 h-[0.25rem] bg-tertiaryAccent dark:bg-[#D39646] rounded-sm ${
             menuOpen ? "-rotate-45" : ""
           } origin-left ease-in-out duration-500`}
         />

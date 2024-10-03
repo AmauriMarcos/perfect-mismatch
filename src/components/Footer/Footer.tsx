@@ -39,7 +39,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="w-full bg-footerBackground pb-10">
+    <div className="w-full bg-footerBackground dark:bg-[#1a546b] pb-10">
       <div className=" md:mt-[50px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] pt-6 md:pt-0">
         <div className="flex flex-col md:flex-row justify-between mb-4">
           <div className="flex gap-4 md:gap-8 justify-center  md:items-left ">
@@ -87,7 +87,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col md:flex-row items-center gap-6 mt-6 md:mt-0">
-            <div className="flex justify-between items-center bg-white rounded-full p-2 w-full max-w-[224px] md:max-w-[251px]">
+            <div className="flex justify-between items-center bg-white rounded-lg p-2 w-full max-w-[224px] md:max-w-[251px]">
               <div className="flex items-center w-full">
                 <SearchIcon
                   className="min-w-5 min-h-5 text-gray-500 cursor-pointer"
@@ -112,14 +112,14 @@ const Footer = () => {
               )}
             </div>
 
-            <button className="min-w-[224px] md:min-w-[251px] justify-center bg-[#FFA38A] hover:bg-teal-500 text-white font-semibold  py-2 px-6 md:px-4 rounded-full flex items-center ">
+            <button className="min-w-[224px] md:min-w-[251px] justify-center bg-[#FFA38A] dark:bg-[#1D2529] dark:hover:bg-[#1D2529]/90 hover:bg-teal-500 text-white font-semibold  py-2 px-6 md:px-4 rounded-lg flex items-center ">
               <Link
                 href="https://www.instagram.com/lily.marija/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex "
               >
-                <InstagramIcon className="w-5 h-5 text-white mr-2" />
+                <InstagramIcon className="w-5 h-5 text-white mr-2 self-center" />
                 Follow on Instagram
               </Link>
             </button>

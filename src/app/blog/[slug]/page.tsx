@@ -2,9 +2,9 @@ import React from "react";
 import { BlogPost } from "@/lib/interface";
 import { getPostsByCategory } from "@/app/server/actions";
 import Posts from "@/components/Posts/Posts";
-import LottieAnimation from "@/components/LottieAnimation/noDataFoundAnimation";
 import About from "@/components/About/About";
 import Contact from "@/components/Contact/Contact";
+import Image from "next/image";
 
 export const revalidate = 0;
 
@@ -23,9 +23,9 @@ const DynamicPage = async ({ params }: { params: { slug: string } }) => {
       if (postCount > 0) {
         content = (
           <div className="mt-5 md:mt-[50px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col">
-            <p className="text-secondary font-thin text-2xl md:text-3xl">
+            <p className="font-montserrat text-primary  text-lg md:text-2xl">
               {`We found `}
-              <span className="font-bold my-2">{postCount}</span>
+              <span className="font-bold my-2 font-montserrat">{postCount}</span>
               <span className="ml-2">{postCount === 1 ? "post" : "posts"}</span>
               {` related to ${slug}`}
             </p>
@@ -35,11 +35,11 @@ const DynamicPage = async ({ params }: { params: { slug: string } }) => {
       } else {
         content = (
           <div className="mt-5 md:mt-[40px] w-full px-[6%] md:px-[12%] 2xl:px-[14%] flex flex-col items-center justify-center mb-[3rem]">
-            <LottieAnimation />
-
-            <p className="text-primary text-md md:text-2xl text-center">
+            <Image className="block dark:hidden max-w-[230px] max-h-[230px] md:max-w-[300px] md:max-h-[300px] " src="/noDataFound3.svg" width={300} height={300} alt='no data found'/>
+            <Image className="hidden dark:block max-w-[230px] max-h-[230px] md:max-w-[300px] md:max-h-[300px]" src="/noDataNewDark.svg" width={300} height={300} alt='no data found'/>
+            <p className="text-[#3B3B3B] dark:text-[#f2f2f2] text-sm md:text-lg text-center w-full md:w-[400px]">
               {`Hmm, we don’t have any `}
-              <span className="font-bold my-2">{slug}</span>
+              <span className="font-bold my-2 text-[#ff7766] dark:text-[#D39646]">{slug}</span>
               {` posts available at the moment. Feel free to browse our latest articles or suggest topics you'd like to see! `}
             </p>
           </div>

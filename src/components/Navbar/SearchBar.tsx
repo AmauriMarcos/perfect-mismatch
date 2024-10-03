@@ -45,7 +45,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ openSearch, setOpenSearch, setMen
   
   return (
     <div
-      className={`absolute h-[81px] py-[15px] px-[30px] ${windowWidth > 767 ? 'top-[172px]' :  'top-[94px]'}  left-0 z-50 bg-searchBackground w-full flex flex-col justify-between`}
+      className={`absolute h-[81px] py-[15px] px-[30px] ${windowWidth > 767 ? 'top-[172px]' :  'top-[94px]'}  left-0 z-50 bg-searchBackground dark:bg-[#2b373d] w-full flex flex-col justify-between`}
     >
       <div className='w-full flex justify-between items-center'>
         <form className='w-full flex items-center justify-between pr-[20px]  md:pr-[60px]'>

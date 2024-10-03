@@ -22,7 +22,7 @@ const Hero: React.FC<HeroProps> = ({ latestPost }) => {
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8">
         <Image
           priority
-          className="object-cover h-[260px] md:h-[360px] min-w-0 md:min-w-[500px] "
+          className="object-cover h-[260px] md:h-[360px] min-w-0 md:min-w-[500px] rounded-md"
           height={360}
           width={500}
           src={urlFor(latestPost.mainImage).url()}
@@ -39,7 +39,7 @@ const Hero: React.FC<HeroProps> = ({ latestPost }) => {
           </h2>
           <div className="flex items-center gap-2 ">
             <p className="font-inter font-light text-[.8rem]">author</p>
-            <p className="font-bold text-secondary font-inter text-[.8rem]">
+            <p className="font-bold text-secondary dark:text-[#66a5ba] font-inter text-[.8rem]">
               {authorName}
             </p>
           </div>

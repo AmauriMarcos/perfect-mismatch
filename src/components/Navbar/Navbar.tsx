@@ -59,10 +59,10 @@ const Navbar = () => {
   return (
     <div className={`w-full flex flex-col z-50`}>
       <div
-        className={`flex w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[44px] bg-tertiary hover:bg-secondaryAccent group cursor-pointer`}
+        className={`flex w-full items-center justify-center py-[10px] px-[15px] gap-2 h-[44px] bg-tertiary hover:bg-[#f9ece0] dark:hover:bg-[#66a5ba] cursor-pointer`}
       >
-        <IconSearch className="h-4 w-4 md:h-6 md:w-6 fill-[#313131] cursor-pointer group-hover:fill-[#313131]" />
-        <h4 className="font-montserrat text-[.525rem] md:text-[.65rem] uppercase font-extrabold text-[#313131] cursor-pointer group-hover:text-[#313131]">
+        <IconSearch className="h-4 w-4 md:h-6 md:w-6 fill-[#313131] dark:fill-[#fff] cursor-pointer " />
+        <h4 className="font-montserrat text-[.525rem] md:text-[.65rem] uppercase font-extrabold text-[#313131] dark:text-[#fff] cursor-pointer">
           Explore the latest updates, visit our latest posts now!
         </h4>
       </div>
@@ -124,8 +124,8 @@ const Navbar = () => {
           className={`flex justify-between w-full h-[50px] md:h-[70px] gap-8 z-50`}
         >
           <div className="h-full flex items-center justify-center">
-            <h3 className="font-extrabold text-[1.5rem] md:text-[2rem] font-montserrat text-secondary">
-              PMLogo
+            <h3 className="font-extrabold text-[1.5rem] md:text-[2rem] font-montserrat text-[#000] dark:text-[#fff]">
+              Logo
             </h3>
           </div>
           <ul className="hidden md:flex relative gap-6 grow m-auto justify-end items-center">
@@ -146,7 +146,7 @@ const Navbar = () => {
                   {item.name}
 
                   <span
-                    className={`absolute inset-0 top-[.2rem] bottom-[-.2rem] left-0 right-0 border-t-[3px] border-b-[3px] border-[#FFB4A0] transition-all duration-500 ease-in-out opacity-0 scale-y-0 ${
+                    className={`absolute inset-0 top-[.2rem] bottom-[-.2rem] left-0 right-0 border-t-[3px] border-b-[3px] border-[#FFB4A0] dark:border-[#d39646] transition-all duration-500 ease-in-out opacity-0 scale-y-0 ${
                       item.path === "/"
                         ? pathname === "/"
                           ? "opacity-100 scale-y-100 top-[0] bottom-[-.2rem]"
@@ -165,12 +165,12 @@ const Navbar = () => {
             <ThemeSwitch />
             <div
               onClick={toggleSearch}
-              className="h-[36px] w-[36px] md:h-[50px] md:w-[50px] hover:bg-tertiaryAccent bg-tertiary rounded-full border-solid border-[#000] flex items-center justify-center group cursor-pointer"
+              className="h-[36px] w-[36px] md:h-[50px] md:w-[50px] hover:bg-tertiaryAccent dark:hover:bg-[#66a5ba] bg-tertiary rounded-full border-solid border-[#000] flex items-center justify-center group cursor-pointer"
             >
               {openSearch ? (
-                <IconClose className="h-[16px] md:h-[20px] w-[16px] md:w-[20px] dark:fill-[#030303]" />
+                <IconClose className="h-[16px] md:h-[20px] w-[16px] md:w-[20px] dark:fill-[#fff]" />
               ) : (
-                <IconSearch className="h-[16px] md:h-[20px] w-[16px] md:w-[20px] dark:fill-[#030303]" />
+                <IconSearch className="h-[16px] md:h-[20px] w-[16px] md:w-[20px] dark:fill-[#fff]" />
               )}
             </div>
             <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />

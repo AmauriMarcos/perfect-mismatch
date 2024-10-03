@@ -37,13 +37,13 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
         <div className=" gap-2 flex items-end w-full justify-end">
           <p className="font-inter font-light text-[.8rem]">author</p>
-          <p className="font-bold text-secondary font-inter text-[.8rem]">
+          <p className="font-bold text-secondary dark:text-[#66a5ba] font-inter text-[.8rem]">
             {authorName}
           </p>
         </div>
       </div>
-      <div className="w-full prose-h2:text-2xl prose-h2:md:text-[30px] prose-li:marker:text-tertiaryAccent  prose prose-lg m-auto dark:prose-invert  prose-headings:font-montserrat prose-p:font-inter">
-        <h1 className=" font-montserrat font-extrabold mt-[1.5rem] sm:mt-[0] text-3xl sm:text-[3rem] text-center tracking-tight leading-tight">
+      <div className="w-full prose-h2:text-2xl prose-h2:md:text-[30px] prose-li:marker:text-tertiaryAccent dark:prose-li:marker:text-[#66A5BA]  prose prose-lg m-auto dark:prose-invert  prose-headings:font-montserrat prose-p:font-inter">
+        <h1 className=" font-montserrat font-extrabold mt-[1.5rem]  text-3xl sm:text-[3rem] text-center tracking-tight leading-tight">
           {data.title}
         </h1>
 
