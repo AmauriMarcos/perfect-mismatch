@@ -1,9 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { IoIosSearch as IconSearch } from "react-icons/io";
 import { usePathname } from "next/navigation";
 import BeatLoader from "react-spinners/BeatLoader";
-import LottieAnimationSending from "../LottieAnimation/sendingAnimation";
 import { BsFillSendFill } from "react-icons/bs";
 
 const Subscribe = () => {
